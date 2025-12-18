@@ -1,22 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-        <link rel="stylesheet" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aonde me encontrar... </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Felipe Olímpio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <body>
-    <header class="navbar">
-    <div class="logo">Desenvolvedor Felipe Olimpio</div>
-  <nav>
-    <a href="sobre.html">Sobre</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="contato.html">Contato</a>
-  </nav>
-</header>
+  <!-- Navbar igual em todas as páginas -->
+  <header class="navbar">
+    <div class="logo">Felipe Olímpio</div>
+    <nav>
+      <a href="sobre.html">Sobre</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
 
-</body>
+  <!-- Container principal da página de contato -->
+  <main class="contato-container">
+    
+    <!-- Seção Hero / destaque -->
+    <section class="contato-hero">
+      <h1>Vamos Conversar! 💬</h1>
+      <p>Tem uma ideia interessante, proposta de vaga ou quer apenas trocar uma ideia sobre tecnologia? Fique à vontade para entrar em contato.</p>
+    </section>
+
+    <!-- Duas colunas: informações e redes sociais -->
+    <section class="contato-content">
+      
+      <!-- Coluna Esquerda: Informações de Contato -->
+      <div class="contato-info">
+        <h2>Informações de Contato</h2>
+        
+        <!-- Email -->
+        <div class="info-card">
+          <div class="info-icon">📧</div>
+          <h3>Email</h3>
+          <p>felipeolimpio07@gmail.com</p>
+          <a href="mailto:felipeolimpio07@gmail.com" class="btn-contato">Enviar Email</a>
+        </div>
+
+        <!-- WhatsApp (ajuste o número) -->
+        <div class="info-card">
+          <div class="info-icon">💬</div>
+          <h3>WhatsApp</h3>
+          <p>Disponível para mensagens e chamadas rápidas.</p>
+          <a href="https://wa.me/55SEUNUMEROAQUI" target="_blank" class="btn-contato">Enviar WhatsApp</a>
+        </div>
+
+        <!-- Localização -->
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <h3>Localização</h3>
+          <p>Paraná, Brasil</p>
+          <a href="https://maps.google.com/?q=Paraná,Brasil" target="_blank" class="btn-contato">Ver no Mapa</a>
+        </div>
+      </div>
+
+      <!-- Coluna Direita: Redes Sociais -->
+      <div class="redes-sociais-section">
+        <h2>Redes e Plataformas</h2>
+        <p>Acompanhe meus projetos, carreira e conteúdo nas plataformas abaixo.</p>
+
+        <div class="redes-grid">
+          
+          <!-- GitHub -->
+          <a href="https://github.com/felipeolimpio07" target="_blank" class="rede-card github">
+            <div class="rede-icon">🐙</div>
+            <h3>GitHub</h3>
+            <p>Portfólio de projetos e códigos.</p>
+            <span class="rede-link">github.com/felipeolimpio07</span>
+          </a>
+
+          <!-- Instagram (ajuste o usuário) -->
+          <a href="https://instagram.com/SEU_USUARIO" target="_blank" class="rede-card instagram">
+            <div class="rede-icon">📸</div>
+            <h3>Instagram</h3>
+            <p>Um pouco do dia a dia e bastidores.</p>
+            <span class="rede-link">@SEU_USUARIO</span>
+          </a>
+
+          <!-- LinkedIn (ajuste o link) -->
+          <a href="https://linkedin.com/in/SEU_PERFIL" target="_blank" class="rede-card linkedin">
+            <div class="rede-icon">💼</div>
+            <h3>LinkedIn</h3>
+            <p>Carreira, experiência e networking profissional.</p>
+            <span class="rede-link">linkedin.com/in/SEU_PERFIL</span>
+          </a>
+
+          <!-- Outra Rede (opcional: X/Twitter, YouTube, etc.) -->
+          <a href="https://twitter.com/SEU_USUARIO" target="_blank" class="rede-card twitter">
+            <div class="rede-icon">𝕏</div>
+            <h3>Twitter / X</h3>
+            <p>Ideias rápidas, tecnologia e opinião.</p>
+            <span class="rede-link">@SEU_USUARIO</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário de Contato -->
+    <section class="formulario-section">
+      <h2>Envie uma Mensagem</h2>
+      <form class="contato-form" action="#" method="POST">
+        
+        <div class="form-group">
+          <label for="nome">Nome *</label>
+          <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="seu.email@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="assunto">Assunto *</label>
+          <input type="text" id="assunto" name="assunto" required placeholder="Sobre o que gostaria de falar?">
+        </div>
+
+        <div class="form-group">
+          <label for="mensagem">Mensagem *</label>
+          <textarea id="mensagem" name="mensagem" rows="6" required placeholder="Escreva sua mensagem aqui..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Mensagem</button>
+      </form>
+    </section>
+
+  </main>
 </body>
 </html>

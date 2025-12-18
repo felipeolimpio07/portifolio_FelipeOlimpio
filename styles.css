@@ -148,3 +148,355 @@
   margin-bottom: 4rem;
 }
 
+/* ==========================================================================
+   SEÇÃO SOBRE MIM / CURIOSIDADES
+   ========================================================================== */
+.sobre-mim {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.sobre-mim h2 {
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.curiosidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.curiosidade-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #38bdf8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curiosidade-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+}
+
+.curiosidade-card h3 {
+  color: #0f172a;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.curiosidade-card p {
+  color: #475569;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .curiosidades-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .sobre-mim h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   SEÇÃO CONTATO (página contato.html)
+   ========================================================================== */
+
+.contato-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+/* Hero / destaque superior */
+.contato-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #38bdf8 0%, #9400D3 100%);
+  border-radius: 20px;
+  color: #ffffff;
+}
+
+.contato-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.contato-hero p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* Layout duas colunas principal */
+.contato-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+/* Títulos das seções */
+.contato-info h2,
+.redes-sociais-section h2 {
+  color: #0f172a;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.redes-sociais-section p {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Cards de informações (email, whatsapp, localização) */
+.info-card {
+  background: #f8fafc;
+  padding: 1.75rem;
+  border-radius: 15px;
+  border-left: 4px solid #38bdf8;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+}
+
+.info-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.info-card h3 {
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.info-card p {
+  color: #64748b;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* Botão pequeno dentro dos cards */
+.btn-contato {
+  display: inline-block;
+  padding: 0.6rem 1.3rem;
+  background: #38bdf8;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-contato:hover {
+  background: #0ea5e9;
+  transform: translateY(-1px);
+}
+
+/* Grid de redes sociais */
+.redes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.rede-card {
+  background: #f8fafc;
+  padding: 1.75rem;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rede-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.18);
+}
+
+/* Bordas por rede (cores oficiais) */
+.rede-card.github {
+  border-color: #333333;
+}
+
+.rede-card.instagram {
+  border-color: #e4405f;
+}
+
+.rede-card.linkedin {
+  border-color: #0077b5;
+}
+
+.rede-card.twitter {
+  border-color: #1da1f2;
+}
+
+.rede-icon {
+  font-size: 2.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.rede-card h3 {
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.rede-card p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.rede-link {
+  color: #38bdf8;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Formulário de contato */
+.formulario-section {
+  background: #f8fafc;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 3rem;
+}
+
+.formulario-section h2 {
+  color: #0f172a;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.contato-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Botão do formulário */
+.btn-submit {
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, #38bdf8 0%, #9400D3 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .contato-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .redes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contato-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .contato-container {
+    padding: 0 1.25rem;
+  }
+
+  .contato-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .redes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-section {
+    padding: 2rem 1.5rem;
+  }
+}
