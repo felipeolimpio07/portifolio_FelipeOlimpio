@@ -3,80 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filippe Olímpio | Desenvolvedor Fullstack</title>
+    <title>Felipe Olímpio | Desenvolvedor Fullstack</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* VARIÁVEIS DE COR */
+        :root {
+            /* Fundo branco para Navbar e Hero no modo Light */
+            --bg-hero: #ffffff; 
+            --bg-navbar: #ffffff;
+            
+            --bg-light: #f8f9fa;
+            --bg-card: white;
+            --text-main: #1e293b; /* Texto escuro */
+            --text-muted: #64748b;
+            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+        }
+
+        /* Cores para o Modo Escuro (Dark Mode) */
+        [data-theme="dark"] {
+            --bg-hero: #0f172a; /* Escuro no dark mode */
+            --bg-navbar: rgba(15, 23, 42, 0.95);
+            --bg-light: #1e293b;
+            --bg-card: #334155;
+            --text-main: #f8fafc; /* Texto claro no dark mode */
+            --text-muted: #94a3b8;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            scroll-behavior: smooth;
+            padding-top: 80px;
+            color: var(--text-main);
+            background: var(--bg-hero);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        /* NAVBAR */
+        .navbar-custom {
+            background: var(--bg-navbar) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Sombra leve */
+            padding: 0.75rem 0 !important;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: background 0.3s ease;
+        }
+        .navbar-nav {
+            flex-direction: row !important;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            color: #4f46e5 !important;
+            background: rgba(79,70,229,0.05);
+            transform: translateY(-1px);
+        }
+        .navbar-brand { 
+            color: #4f46e5 !important; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+        }
+        
+        /* HERO SECTION (Seção do Nome) */
+        .hero { 
+            background: var(--bg-hero); 
+            transition: background 0.3s ease;
+            /* Texto escuro no light mode */
+            color: var(--text-main) !important; 
+        }
+        /* Ajuste específico para garantir texto escuro no Light Mode */
+        [data-theme="light"] .hero h1, 
+        [data-theme="light"] .hero h2, 
+        [data-theme="light"] .hero p {
+            color: #1e293b !important;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+            color: white; 
+        }
+        
+        /* Seções e Cards */
+        .bg-light-custom { background: var(--bg-light) !important; transition: background 0.3s ease; }
+        .card { 
+            background: var(--bg-card) !important; 
+            color: var(--text-main) !important; 
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .text-muted-custom { color: var(--text-muted) !important; }
+        
+        section { scroll-margin-top: 100px; }
+        
+        /* Botão Dark Mode */
+        .theme-toggle {
+            background: none !important;
+            border: 1px solid var(--text-muted) !important;
+            border-radius: 50% !important;
+            width: 40px !important;
+            height: 40px !important;
+            color: var(--text-main) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .theme-toggle:hover { border-color: #4f46e5 !important; color: #4f46e5 !important; }
+        
+        /* Controle de ícones */
+        .fa-sun { display: block; }
+        .fa-moon { display: none; }
+        [data-theme="dark"] .fa-sun { display: none; }
+        [data-theme="dark"] .fa-moon { display: block; }
+        
+        @media (max-width: 992px) {
+            .nav-link { font-size: 0.85rem; padding: 0.4rem 0.5rem !important; }
+            .navbar-brand { font-size: 1.1rem; }
+            .container { padding-left: 15px; padding-right: 15px; }
+        }
+    </style>
 </head>
-<body>
-    <!-- Navbar SEMPRE horizontal (igual Samuel Henrique) -->
-<nav class="navbar navbar-expand navbar-custom fixed-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold fs-4 text-primary" href="#hero">
-            <i class="fas fa-code me-2"></i>Felipe Olímpio
-        </a>
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link px-3" href="#habilidades">Sobre Mim</a>         
-            <a class="nav-link px-3" href="#habilidades">Habilidades</a>
-            <a class="nav-link px-3" href="#projetos">Experiencia</a>
-            <a class="nav-link px-3" href="#projetos">Projetos</a>
-            <a class="nav-link px-3" href="#contato">certificações</a>
-            <a class="nav-link px-3" href="#contato">Contato</a>
-
+<body data-theme="light">
+    <!-- Navbar (Branca) -->
+    <nav class="navbar navbar-expand navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="#hero">
+                <i class="fas fa-code me-2"></i>Felipe Olímpio
+            </a>
+            
+            <div class="d-flex ms-auto align-items-center">
+                <div class="navbar-nav me-2">
+                    <a class="nav-link" href="#hero">Sobre</a>
+                    <a class="nav-link" href="#habilidades">Habilidades</a>
+                    <a class="nav-link" href="#projetos">Projetos</a>
+                    <a class="nav-link" href="#contato">Contato</a>
+                </div>
+                
+                <!-- BOTÃO DARK MODE -->
+                <button id="theme-toggle" class="btn theme-toggle" title="Alternar Tema">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Agora com fundo branco e texto escuro) -->
     <section id="hero" class="hero min-vh-100 d-flex align-items-center">
-        <div class="container text-center text-white">
+        <div class="container text-center">
             <h1 class="display-3 fw-bold mb-3">Olá, eu sou Felipe Olímpio</h1>
-            <h2 class="display-5 fw-normal mb-4">Desenvolvedor Fullstack</h2>
-            <p class="lead mb-5 opacity-90 px-4">Especialista em PHP, Java, Android e Linux. Construo sistemas web e mobile completos com foco em performance e usabilidade.</p>
-            <a href="#projetos" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-lg fs-5">Ver Projetos</a>
+            <h2 class="display-5 fw-normal mb-4 text-muted-custom">Desenvolvedor Fullstack</h2>
+            <p class="lead mb-5 px-lg-5 text-muted-custom">Especialista em PHP, Java, Android e Linux. Construo sistemas web e mobile completos com foco em performance e usabilidade.</p>
+            <a href="#projetos" class="btn btn-primary-custom btn-lg px-5 py-3 rounded-pill fs-5">Ver Projetos</a>
         </div>
     </section>
 
     <!-- Habilidades -->
-    <section id="habilidades" class="py-5 bg-light">
+    <section id="habilidades" class="py-5 bg-light-custom">
         <div class="container">
             <h2 class="text-center fw-bold mb-5 fs-1">Habilidades Técnicas</h2>
             <div class="row g-4">
                 <div class="col-lg-6">
-                    <h5 class="fw-bold mb-4 fs-4">Web Development</h5>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
+                    <h5 class="fw-bold mb-4 fs-4 text-primary">Web Development</h5>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2 fw-bold">
                             <span>PHP / MySQL</span><span>95%</span>
                         </div>
-                        <div class="progress" style="height: 12px;">
-                            <div class="progress-bar bg-primary" style="width: 95%"></div>
+                        <div class="progress" style="height: 10px; background-color: #e2e8f0;">
+                            <div class="progress-bar" style="width: 95%; background: linear-gradient(90deg, #4f46e5, #6366f1);"></div>
                         </div>
                     </div>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2 fw-bold">
                             <span>JavaScript / Bootstrap</span><span>90%</span>
                         </div>
-                        <div class="progress" style="height: 12px;">
-                            <div class="progress-bar bg-primary" style="width: 90%"></div>
+                        <div class="progress" style="height: 10px; background-color: #e2e8f0;">
+                            <div class="progress-bar" style="width: 90%; background: linear-gradient(90deg, #4f46e5, #6366f1);"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h5 class="fw-bold mb-4 fs-4">Tecnologias & Tools</h5>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
+                    <h5 class="fw-bold mb-4 fs-4 text-success">Tecnologias & Tools</h5>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2 fw-bold">
                             <span>Android / Kotlin</span><span>88%</span>
                         </div>
-                        <div class="progress" style="height: 12px;">
+                        <div class="progress" style="height: 10px; background-color: #e2e8f0;">
                             <div class="progress-bar bg-success" style="width: 88%"></div>
                         </div>
                     </div>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2 fw-bold">
                             <span>Linux / Git / XAMPP</span><span>95%</span>
                         </div>
-                        <div class="progress" style="height: 12px;">
+                        <div class="progress" style="height: 10px; background-color: #e2e8f0;">
                             <div class="progress-bar bg-info" style="width: 95%"></div>
                         </div>
                     </div>
@@ -94,48 +234,82 @@
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-body p-4">
                             <h5 class="card-title fw-bold">Sistema Hospitalar</h5>
-                            <p class="card-text">Dashboard completo PHP/MySQL com agendamento, locais de doação e autenticação.</p>
-                            <a href="https://github.com/seuuser/hospital" class="btn btn-outline-primary">Ver Código</a>
+                            <p class="card-text text-muted-custom">Dashboard completo PHP/MySQL com agendamento, locais de doação e autenticação.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3 w-100">Ver Código</a>
                         </div>
                     </div>
                 </div>
-                <!-- Mais projetos aqui -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold">App Android Kotlin</h5>
+                            <p class="card-text text-muted-custom">Aplicativo mobile nativo com banco de dados local Room e integração com APIs REST.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3 w-100">Ver App</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold">Portfólio Pessoal</h5>
+                            <p class="card-text text-muted-custom">Site responsivo com tema dark/light, feito com HTML5, CSS3 e Bootstrap 5.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3 w-100">Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contato -->
-    <section id="contato" class="py-5 bg-dark text-white">
+    <section id="contato" class="py-5 text-white" style="background: #1e293b;">
         <div class="container text-center">
-            <h2 class="fw-bold mb-5 fs-1">Entre em Contato</h2>
+            <h2 class="fw-bold mb-5 fs-1 text-white">Entre em Contato</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-lg-4 col-md-6">
-                    <a href="https://wa.me/5541999999999" class="btn btn-success btn-lg w-100 mb-3">
+                    <a href="https://wa.me/5541999999999" class="btn btn-success btn-lg w-100 mb-3 shadow-lg">
                         <i class="fab fa-whatsapp me-2"></i>WhatsApp
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <a href="mailto:seuemail@exemplo.com" class="btn btn-primary btn-lg w-100 mb-3">
+                    <a href="mailto:seuemail@exemplo.com" class="btn btn-primary-custom btn-lg w-100 mb-3 shadow-lg">
                         <i class="fas fa-envelope me-2"></i>Email
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <a href="https://github.com/seuuser" class="btn btn-secondary btn-lg w-100 mb-3">
+                    <a href="https://github.com/seuuser" class="btn btn-secondary btn-lg w-100 mb-3 shadow-lg">
                         <i class="fab fa-github me-2"></i>GitHub
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-// Scroll suave
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-    });
-});
-</script>
 </html>
