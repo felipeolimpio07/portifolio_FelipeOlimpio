@@ -1,0 +1,445 @@
+/* Reset básico para tirar margens padrão */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: sans-serif;
+}
+
+.navbar {
+display: flex; /* PAR FICAR DENTRO DA NAVBAR */
+justify-content: space-between; /* Logo na esquerda, links na direita */
+align-items: center; /*ALINHAMENTO DENTRO DA NAVBAR */
+background-color: #86888A; /* COR DE FUNDO DA NAVBAR*/
+padding: 1rem 2rem; /* TAMANHO DA NAVBAR */
+color: black; /*COR DO NOME DA ESQUERDA */
+gap : 30px; 
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+  /* --- AS LINHAS MÁGICAS PARA FIXAR --- */
+  position: fixed; /* Fixa a barra na tela */
+  top: 0;          /* Cola no topo */
+  left: 0;         /* Começa da esquerda */
+  width: 100%;     /* Ocupa a largura toda */
+  z-index: 1000;   /* Garante que ela fique por cima de tudo (foto, texto, etc) */
+}
+
+.nav-links {
+display: flex; /*PARA FICAR NA HORIZONTAL OS BOTÕES */
+list-style: none; /*PARA TIRAR AS BOLINHAS DOS BOTÕES */
+}
+
+.nav-links li {
+margin-left: 25px; /*DISTANCIAS DAS PALAVRAS NA NAVBAR */
+}
+
+.nav-links a {
+color: black; /* COR DAS LETRAS DA NAVBAR*/
+text-decoration: none; /* PARA TIRAR A LINHA DE BAIXO DE CADA BOTÃO */
+font-weight: bold; /*ESTILO DA LETRA DA NAVEBAR */
+
+}
+
+/* Efeito ao passar o mouse */
+.nav-links a:hover {
+color: #0077B5;
+}
+
+/*TERMINO DO ESTILO DA NAVBAR */ /*TERMINO DO ESTILO DA NAVBAR */ /*TERMINO DO ESTILO DA NAVBAR */ /*TERMINO DO ESTILO DA NAVBAR */ 
+
+/*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */
+
+
+.main-content {
+  display: flex; /* Coloca texto e imagem lado a lado */
+  align-items: center; /* Centraliza verticalmente o texto com a foto */
+  justify-content: space-between; /* Texto na ponta esquerda, foto na direita */
+  padding: 50px 10%; /* Espaçamento interno para não grudar nas bordas da tela */
+  min-height: 80vh; /* Faz a seção ocupar quase a tela toda */
+}
+
+.texto-esquerda {
+  flex: 1; /* Faz o texto ocupar metade do espaço */
+  padding-right: 20px;
+}
+
+.texto-esquerda h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.texto-esquerda p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.foto-direita {
+  flex: 1; /* Mantém metade do espaço */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centraliza perfeitamente */
+}
+
+.foto-direita img {
+  width: 450px; /* Tamanho maior - ajuste conforme sua tela */
+  height: 450px; /* Mesmo valor para círculo perfeito */
+  max-width: 100%; /* Responsivo em telas menores */
+  object-fit: cover; /* Preenche sem distorcer */
+  border-radius: 50%; /* Foto 100% redonda */
+  box-shadow: 10px 20px 20px rgba(0,0,0,0.1); /* Sombra corrigida */
+}
+
+/*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */
+
+/* INICIO BOTÕES DO LINKDIM E GITHUB */
+
+.botoes-grupo {
+  display: flex;
+  gap: 15px; /* Espaço entre botões */
+  margin-top: 30px; /* Distância do texto */
+}
+
+.btn-saiba-mais,
+.btn-github,
+.btn-linkedin {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço ícone-texto */
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-saiba-mais {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+}
+
+.btn-saiba-mais:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.btn-github {
+  background: #24292e;
+  color: white;
+}
+
+.btn-github:hover {
+  background: #30363d;
+}
+
+.btn-linkedin {
+  background: #0077b5;
+  color: white;
+}
+
+.btn-linkedin:hover {
+  background: #005582;
+}
+
+.btn-icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* TERMINO BOTÕES DO LINKDIM E GITHUB */
+
+/*ROLAGEM SUAVE */
+
+/* Faz a rolagem ser suave quando clicar no menu */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Deixa a foto redonda e maior */
+.foto-direita img {
+  width: 380px;      /* Tamanho maior que você pediu */
+  height: 380px;     /* Precisa ser igual à largura para ficar redondo */
+  border-radius: 50%; /* Círculo perfeito */
+  object-fit: cover; /* Garante que a foto não estique */
+  border: 5px solid #0077B5; /* Borda azul para combinar com os botões */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Seção Habilidades com cor de fundo diferente */
+.secao-habilidades {
+  background-color: #f4f7f9; /* Um tom de cinza/azul bem claro para destacar */
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.secao-habilidades h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.cards-habilidades {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 30px 50px;
+  border-radius: 15px;
+  font-weight: bold;
+  color: #0077B5;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Efeito de flutuar ao passar o mouse */
+}
+
+/* MINHAS HABILIDADES */ 
+
+/* --- SEÇÃO HABILIDADES (LIMPO E ORGANIZADO) --- */
+
+.secao-habilidades {
+  background-color: #f4f7f9;
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.container-skills {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* O "Quadrado" de cada categoria */
+.skill-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  flex: 1;
+  min-width: 250px; 
+  max-width: 350px; 
+  border-bottom: 5px solid #0077B5;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+}
+
+.skill-card h3 {
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Container dos logos dentro do card */
+.logos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Bloco individual: Ícone + Nome */
+.item-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 75px; /* Ajustado para caber o texto melhor */
+}
+
+.item-logo img {
+  width: 45px;
+  height: 45px;
+  transition: 0.3s;
+  filter: grayscale(20%);
+}
+
+.item-logo span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+/* Efeitos de Hover nos itens */
+.item-logo:hover img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+.item-logo:hover span {
+  color: #0077B5;
+}
+
+/* FIM DO MINHAS HABILIDADES */ 
+
+/* INICIO DA MINHA CARREIRA */
+
+/* --- SEÇÃO EXPERIÊNCIA (ESTILO FINAL LIMPO) --- */
+
+.secao-experiencia {
+  background-color: #f0f2f5; /* Cinza claro de fundo */
+  padding: 100px 10%;
+  position: relative;
+}
+
+.secao-experiencia h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 80px;
+  color: #333;
+  width: 100%;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Linha central azul */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  width: 4px;
+  height: 100%; /* Garante que desça até o final do container */
+  background: #0077B5;
+  transform: translateX(-50%);
+  top: 0;
+  z-index: 1;
+}
+
+.timeline-item {
+  display: flex;
+  width: 100%;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.timeline-item.left { justify-content: flex-end; padding-right: 55%; }
+.timeline-item.right { justify-content: flex-start; padding-left: 55%; }
+
+/* O CARD BRANCO */
+.timeline-card {
+  background: #ffffff;
+  color: #333;
+  padding: 25px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  /* Transição suave para o movimento de subir */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+}
+
+/* Efeito Hover: Card sobe reto e ganha destaque */
+.timeline-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  border-color: #0077B5;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+/* LOGO GRANDE E RETA */
+.logo-empresa-time {
+  width: 90px !important;
+  height: 90px !important;
+  background: white;
+  border-radius: 12px;
+  padding: 5px;
+  object-fit: contain;
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.timeline-card h3 {
+  font-size: 1.3rem;
+  color: #0077B5;
+  margin: 0;
+}
+
+.timeline-card span {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.timeline-card p {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* BOLINHA PRETA */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  width: 18px;
+  height: 18px;
+  background: #000000; 
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  border: 3px solid #f0f2f5; /* Borda da cor do fundo da seção */
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+  .timeline-line, .timeline-dot { left: 20px; }
+  .timeline-item.left, .timeline-item.right {
+    padding-left: 50px;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+}
+
+/* FIM DA MINHA EXPERIENCIA */ 
+
+/* 1. SOBRE MIM - Fundo Branco */
+.secao-sobre {
+  background-color: #ffffff;
+  padding: 80px 10%;
+}
+
+/* 2. HABILIDADES - Fundo Cinza Gelo (Intercalando) */
+.secao-habilidades {
+  background-color: #f8f9fa; /* Um cinza bem clarinho */
+  padding: 100px 10%;
+}
+
+/* 3. EXPERIÊNCIA - Fundo Cinza Social (Intercalando mais escuro) */
+/* Este já está no código que limpamos antes! */
+.secao-experiencia {
+  background-color: #f0f2f5; 
+  padding: 100px 10%;
+}
+
+/* 4. PROJETOS - Volta para o Branco */
+.secao-projetos {
+  background-color: #ffffff;
+  padding: 100px 10%;
+}
