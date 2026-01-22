@@ -419,27 +419,213 @@ html {
 
 /* FIM DA MINHA EXPERIENCIA */ 
 
-/* 1. SOBRE MIM - Fundo Branco */
-.secao-sobre {
-  background-color: #ffffff;
-  padding: 80px 10%;
-}
 
-/* 2. HABILIDADES - Fundo Cinza Gelo (Intercalando) */
-.secao-habilidades {
-  background-color: #f8f9fa; /* Um cinza bem clarinho */
-  padding: 100px 10%;
-}
+/* Inicio dos projetos */
 
-/* 3. EXPERIÊNCIA - Fundo Cinza Social (Intercalando mais escuro) */
-/* Este já está no código que limpamos antes! */
-.secao-experiencia {
-  background-color: #f0f2f5; 
-  padding: 100px 10%;
-}
-
-/* 4. PROJETOS - Volta para o Branco */
+/* --- SEÇÃO PROJETOS (FUNDO BRANCO) --- */
 .secao-projetos {
   background-color: #ffffff;
   padding: 100px 10%;
+  text-align: center;
 }
+
+.secao-projetos h2 {
+  font-size: 2.8rem;
+  margin-bottom: 60px;
+  color: #333;
+}
+
+.container-projetos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Faz os projetos irem para baixo no celular */
+}
+
+.projeto-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden; /* Garante que a imagem siga o arredondado do card */
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #eee;
+  transition: all 0.4s ease;
+  text-align: left;
+}
+
+.projeto-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-color: #0077B5;
+}
+
+.projeto-imagem img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.projeto-info {
+  padding: 25px;
+}
+
+.projeto-info h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.projeto-info p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  height: 60px; /* Mantém o alinhamento mesmo com textos diferentes */
+}
+
+/* Container das logos das ferramentas */
+.projeto-ferramentas {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.projeto-ferramentas img {
+  width: 25px;
+  height: 25px;
+  filter: grayscale(100%);
+  transition: 0.3s;
+}
+
+.projeto-card:hover .projeto-ferramentas img {
+  filter: grayscale(0%); /* As ferramentas ganham cor no hover */
+}
+
+.btn-projeto {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0077B5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-projeto:hover {
+  background-color: #005582;
+}
+
+/* Termino dos meus projetos 
+
+/* inicio do contato 
+/* --- SEÇÃO CONTATO (FUNDO CINZA GELO) --- */
+.secao-contato {
+  background-color: #f8f9fa;
+  padding: 100px 10% 40px 10%;
+  text-align: center;
+}
+
+.secao-contato h2 {
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.subtitulo-contato {
+  color: #666;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+}
+
+.container-contato {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+.contato-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 300px;
+  padding: 40px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Efeito de movimento que você gosta */
+.contato-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border-color: #0077B5;
+}
+
+.contato-icone {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.contato-icone img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Cores suaves de fundo para os ícones */
+.contato-icone.email { background-color: #fff0f0; }
+.contato-icone.whats { background-color: #e8f9ed; }
+.contato-icone.linkedin { background-color: #e8f3f9; }
+
+.contato-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.contato-card p {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.contato-card span {
+  font-weight: bold;
+  color: #0077B5;
+  font-size: 0.9rem;
+}
+
+/* FOOTER FINAL */
+footer {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #e0e0e0;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+/* Ajuste Celular */
+@media (max-width: 768px) {
+  .contato-card {
+    max-width: 100%;
+  }
+}
+
+/* termino do meu contato 
