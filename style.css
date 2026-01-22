@@ -289,10 +289,10 @@ html {
 
 /* INICIO DA MINHA CARREIRA */
 
-/* --- SEÇÃO EXPERIÊNCIA (ESTILO FINAL LIMPO) --- */
+/* --- SEÇÃO EXPERIÊNCIA (VERSÃO FINAL ATUALIZADA) --- */
 
 .secao-experiencia {
-  background-color: #f0f2f5; /* Cinza claro de fundo */
+  background-color: #f0f2f5; 
   padding: 100px 10%;
   position: relative;
 }
@@ -311,12 +311,11 @@ html {
   margin: 0 auto;
 }
 
-/* Linha central azul */
 .timeline-line {
   position: absolute;
   left: 50%;
   width: 4px;
-  height: 100%; /* Garante que desça até o final do container */
+  height: 100%;
   background: #0077B5;
   transform: translateX(-50%);
   top: 0;
@@ -333,11 +332,10 @@ html {
 .timeline-item.left { justify-content: flex-end; padding-right: 55%; }
 .timeline-item.right { justify-content: flex-start; padding-left: 55%; }
 
-/* O CARD BRANCO */
 .timeline-card {
   background: #ffffff;
   color: #333;
-  padding: 25px;
+  padding: 30px; /* Aumentado para dar mais respiro interno */
   border-radius: 15px;
   width: 100%;
   max-width: 450px;
@@ -345,26 +343,33 @@ html {
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   border: 1px solid #e0e0e0;
   cursor: pointer;
-  /* Transição suave para o movimento de subir */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 2;
 }
 
-/* Efeito Hover: Card sobe reto e ganha destaque */
 .timeline-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
   border-color: #0077B5;
 }
 
+/* HEADER COM LOGO E TEXTO ESPAÇADO */
 .card-header {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 15px;
+  gap: 25px; /* Espaço entre a logo e o bloco de texto */
+  margin-bottom: 20px; /* Espaço entre o header e a descrição abaixo */
 }
 
-/* LOGO GRANDE E RETA */
+.header-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;    
+  flex: 1;
+  gap: 8px; /* O segredo para descolar as palavras uma da outra verticalmente */
+}
+
 .logo-empresa-time {
   width: 90px !important;
   height: 90px !important;
@@ -376,23 +381,36 @@ html {
   transition: 0.3s;
 }
 
-.timeline-card h3 {
+.header-texto h3 {
   font-size: 1.3rem;
   color: #0077B5;
   margin: 0;
+  line-height: 1.2;
 }
 
-.timeline-card span {
+.header-texto .empresa {
+  font-weight: bold;
+  color: #333;
+  font-size: 1rem;
+  display: block;
+}
+
+.header-texto .periodo {
   font-size: 0.85rem;
   color: #777;
+  font-style: italic;
+  display: block;
+  margin-top: 2px; /* Pequeno ajuste fino */
 }
 
+/* TEXTO DE DESCRIÇÃO COM MAIS RESPIRO */
 .timeline-card p {
   color: #555;
-  line-height: 1.5;
+  line-height: 1.7; /* Aumentado para as linhas não ficarem grudadas */
+  margin-top: 15px;
+  font-size: 0.95rem;
 }
 
-/* BOLINHA PRETA */
 .timeline-dot {
   position: absolute;
   left: 50%;
@@ -403,11 +421,10 @@ html {
   border-radius: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  border: 3px solid #f0f2f5; /* Borda da cor do fundo da seção */
+  border: 3px solid #f0f2f5;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
-/* Responsividade para Celular */
 @media (max-width: 768px) {
   .timeline-line, .timeline-dot { left: 20px; }
   .timeline-item.left, .timeline-item.right {
