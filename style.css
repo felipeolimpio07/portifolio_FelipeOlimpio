@@ -1,213 +1,155 @@
-/* Reset básico para tirar margens padrão */
+/* --- 1. CONFIGURAÇÕES DE TEMA (VARIÁVEIS ÚNICAS) --- */
+:root {
+  --bg-body: #ffffff;
+  --bg-secao-alt: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #444444;
+  --border-color: #e0e0e0;
+  --navbar-bg: #ffffff;
+  --accent-color: #0077B5;
+}
+
+[data-theme="dark"] {
+  --bg-body: #121212;
+  --bg-secao-alt: #181818;
+  --bg-card: #252525;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #383838;
+  --navbar-bg: #1a1a1a;
+  --accent-color: #00a8ff;
+}
+
+/* --- 2. RESET E PADRÕES --- */
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
-.navbar {
-display: flex; /* PAR FICAR DENTRO DA NAVBAR */
-justify-content: space-between; /* Logo na esquerda, links na direita */
-align-items: center; /*ALINHAMENTO DENTRO DA NAVBAR */
-background-color: #86888A; /* COR DE FUNDO DA NAVBAR*/
-padding: 1rem 2rem; /* TAMANHO DA NAVBAR */
-color: black; /*COR DO NOME DA ESQUERDA */
-gap : 30px; 
-box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
-  /* --- AS LINHAS MÁGICAS PARA FIXAR --- */
-  position: fixed; /* Fixa a barra na tela */
-  top: 0;          /* Cola no topo */
-  left: 0;         /* Começa da esquerda */
-  width: 100%;     /* Ocupa a largura toda */
-  z-index: 1000;   /* Garante que ela fique por cima de tudo (foto, texto, etc) */
-}
-
-.nav-links {
-display: flex; /*PARA FICAR NA HORIZONTAL OS BOTÕES */
-list-style: none; /*PARA TIRAR AS BOLINHAS DOS BOTÕES */
-}
-
-.nav-links li {
-margin-left: 25px; /*DISTANCIAS DAS PALAVRAS NA NAVBAR */
-}
-
-.nav-links a {
-color: black; /* COR DAS LETRAS DA NAVBAR*/
-text-decoration: none; /* PARA TIRAR A LINHA DE BAIXO DE CADA BOTÃO */
-font-weight: bold; /*ESTILO DA LETRA DA NAVEBAR */
-
-}
-
-/* Efeito ao passar o mouse */
-.nav-links a:hover {
-color: #0077B5;
-}
-
-/*TERMINO DO ESTILO DA NAVBAR */ /*TERMINO DO ESTILO DA NAVBAR */ /*TERMINO DO ESTILO DA NAVBAR */ /*TERMINO DO ESTILO DA NAVBAR */ 
-
-/*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */ /*INICIO DO SOBRE MIM */
-
-
-.main-content {
-  display: flex; /* Coloca texto e imagem lado a lado */
-  align-items: center; /* Centraliza verticalmente o texto com a foto */
-  justify-content: space-between; /* Texto na ponta esquerda, foto na direita */
-  padding: 50px 10%; /* Espaçamento interno para não grudar nas bordas da tela */
-  min-height: 80vh; /* Faz a seção ocupar quase a tela toda */
-}
-
-.texto-esquerda {
-  flex: 1; /* Faz o texto ocupar metade do espaço */
-  padding-right: 20px;
-}
-
-.texto-esquerda h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.texto-esquerda p {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.foto-direita {
-  flex: 1; /* Mantém metade do espaço */
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Centraliza perfeitamente */
-}
-
-.foto-direita img {
-  width: 450px; /* Tamanho maior - ajuste conforme sua tela */
-  height: 450px; /* Mesmo valor para círculo perfeito */
-  max-width: 100%; /* Responsivo em telas menores */
-  object-fit: cover; /* Preenche sem distorcer */
-  border-radius: 50%; /* Foto 100% redonda */
-  box-shadow: 10px 20px 20px rgba(0,0,0,0.1); /* Sombra corrigida */
-}
-
-/*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */ /*TERMINO DO SOBRE MIM */
-
-/* INICIO BOTÕES DO LINKDIM E GITHUB */
-
-.botoes-grupo {
-  display: flex;
-  gap: 15px; /* Espaço entre botões */
-  margin-top: 30px; /* Distância do texto */
-}
-
-.btn-saiba-mais,
-.btn-github,
-.btn-linkedin {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* Espaço ícone-texto */
-  padding: 12px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.btn-saiba-mais {
-  background: linear-gradient(45deg, #ff6b6b, #feca57);
-  color: white;
-}
-
-.btn-saiba-mais:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
-
-.btn-github {
-  background: #24292e;
-  color: white;
-}
-
-.btn-github:hover {
-  background: #30363d;
-}
-
-.btn-linkedin {
-  background: #0077b5;
-  color: white;
-}
-
-.btn-linkedin:hover {
-  background: #005582;
-}
-
-.btn-icone {
-  width: 20px;
-  height: 20px;
-}
-
-/* TERMINO BOTÕES DO LINKDIM E GITHUB */
-
-/*ROLAGEM SUAVE */
-
-/* Faz a rolagem ser suave quando clicar no menu */
 html {
   scroll-behavior: smooth;
 }
 
-/* Deixa a foto redonda e maior */
+body {
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* --- 3. COMPONENTES GERAIS --- */
+h1, h2, h3, span, li a {
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+/* --- 4. NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navbar-bg);
+  padding: 1rem 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Botão de Troca de Tema */
+.theme-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+/* --- 5. SEÇÃO HOME / SOBRE MIM --- */
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 10% 80px 10%;
+  min-height: 80vh;
+}
+
+.texto-esquerda { flex: 1; padding-right: 20px; }
+.texto-esquerda h1 { font-size: 3rem; margin-bottom: 20px; }
+
 .foto-direita img {
-  width: 380px;      /* Tamanho maior que você pediu */
-  height: 380px;     /* Precisa ser igual à largura para ficar redondo */
-  border-radius: 50%; /* Círculo perfeito */
-  object-fit: cover; /* Garante que a foto não estique */
-  border: 5px solid #0077B5; /* Borda azul para combinar com os botões */
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--accent-color);
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* Seção Habilidades com cor de fundo diferente */
-.secao-habilidades {
-  background-color: #f4f7f9; /* Um tom de cinza/azul bem claro para destacar */
-  padding: 100px 10%;
-  text-align: center;
-}
+.botoes-grupo { display: flex; gap: 15px; margin-top: 30px; }
 
-.secao-habilidades h2 {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  color: #333;
-}
-
-.cards-habilidades {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: white;
-  padding: 30px 50px;
-  border-radius: 15px;
+.btn-github, .btn-linkedin {
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
   font-weight: bold;
-  color: #0077B5;
+  color: white;
+}
+.btn-github { background: #24292e; }
+.btn-linkedin { background: #0077b5; }
+
+/* --- 6. CARDS (ESTILO ÚNICO PARA TODOS) --- */
+.skill-card, .timeline-card, .projeto-card, .contato-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s;
+  cursor: pointer;
 }
 
-.card:hover {
-  transform: translateY(-10px); /* Efeito de flutuar ao passar o mouse */
+.skill-card:hover, .timeline-card:hover, .projeto-card:hover, .contato-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
 }
 
-/* MINHAS HABILIDADES */ 
+.skill-card h3, .header-texto h3, .projeto-info h3 {
+  color: var(--accent-color) !important;
+}
 
-/* --- SEÇÃO HABILIDADES (LIMPO E ORGANIZADO) --- */
-
+/* --- 7. SEÇÃO HABILIDADES --- */
 .secao-habilidades {
-  background-color: #f4f7f9;
+  background-color: var(--bg-secao-alt);
   padding: 100px 10%;
   text-align: center;
 }
@@ -220,196 +162,32 @@ html {
   margin-top: 40px;
 }
 
-/* O "Quadrado" de cada categoria */
-.skill-card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  flex: 1;
-  min-width: 250px; 
-  max-width: 350px; 
-  border-bottom: 5px solid #0077B5;
-  transition: transform 0.3s ease;
-}
+.skill-card { padding: 30px; flex: 1; min-width: 250px; max-width: 350px; }
 
-.skill-card:hover {
-  transform: translateY(-10px);
-}
+.logos { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.item-logo { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 75px; }
+.item-logo img { width: 45px; height: 45px; }
 
-.skill-card h3 {
-  margin-bottom: 25px;
-  color: #333;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-/* Container dos logos dentro do card */
-.logos {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-/* Bloco individual: Ícone + Nome */
-.item-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  width: 75px; /* Ajustado para caber o texto melhor */
-}
-
-.item-logo img {
-  width: 45px;
-  height: 45px;
-  transition: 0.3s;
-  filter: grayscale(20%);
-}
-
-.item-logo span {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #666;
-  text-align: center;
-}
-
-/* Efeitos de Hover nos itens */
-.item-logo:hover img {
-  transform: scale(1.1);
-  filter: grayscale(0%);
-}
-
-.item-logo:hover span {
-  color: #0077B5;
-}
-
-/* FIM DO MINHAS HABILIDADES */ 
-
-/* INICIO DA MINHA CARREIRA */
-
-/* --- SEÇÃO EXPERIÊNCIA (VERSÃO FINAL ATUALIZADA) --- */
-
-.secao-experiencia {
-  background-color: #f0f2f5; 
-  padding: 100px 10%;
-  position: relative;
-}
-
-.secao-experiencia h2 {
-  text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 80px;
-  color: #333;
-  width: 100%;
-}
-
-.timeline-container {
-  position: relative;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+/* --- 8. SEÇÃO EXPERIÊNCIA --- */
+.secao-experiencia { padding: 100px 10%; position: relative; }
 
 .timeline-line {
   position: absolute;
-  left: 50%;
-  width: 4px;
-  height: 100%;
-  background: #0077B5;
+  left: 50%; width: 4px; height: 100%;
+  background: var(--accent-color);
   transform: translateX(-50%);
-  top: 0;
-  z-index: 1;
+  top: 0; z-index: 1;
 }
 
-.timeline-item {
-  display: flex;
-  width: 100%;
-  margin-bottom: 60px;
-  position: relative;
-}
-
+.timeline-item { display: flex; width: 100%; margin-bottom: 60px; position: relative; }
 .timeline-item.left { justify-content: flex-end; padding-right: 55%; }
 .timeline-item.right { justify-content: flex-start; padding-left: 55%; }
 
-.timeline-card {
-  background: #ffffff;
-  color: #333;
-  padding: 30px; /* Aumentado para dar mais respiro interno */
-  border-radius: 15px;
-  width: 100%;
-  max-width: 450px;
-  position: relative;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  border: 1px solid #e0e0e0;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 2;
-}
+.timeline-card { padding: 30px; width: 100%; max-width: 450px; z-index: 2; }
 
-.timeline-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-  border-color: #0077B5;
-}
-
-/* HEADER COM LOGO E TEXTO ESPAÇADO */
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 25px; /* Espaço entre a logo e o bloco de texto */
-  margin-bottom: 20px; /* Espaço entre o header e a descrição abaixo */
-}
-
-.header-texto {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  text-align: center;    
-  flex: 1;
-  gap: 8px; /* O segredo para descolar as palavras uma da outra verticalmente */
-}
-
-.logo-empresa-time {
-  width: 90px !important;
-  height: 90px !important;
-  background: white;
-  border-radius: 12px;
-  padding: 5px;
-  object-fit: contain;
-  border: 1px solid #eee;
-  transition: 0.3s;
-}
-
-.header-texto h3 {
-  font-size: 1.3rem;
-  color: #0077B5;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.header-texto .empresa {
-  font-weight: bold;
-  color: #333;
-  font-size: 1rem;
-  display: block;
-}
-
-.header-texto .periodo {
-  font-size: 0.85rem;
-  color: #777;
-  font-style: italic;
-  display: block;
-  margin-top: 2px; /* Pequeno ajuste fino */
-}
-
-/* TEXTO DE DESCRIÇÃO COM MAIS RESPIRO */
-.timeline-card p {
-  color: #555;
-  line-height: 1.7; /* Aumentado para as linhas não ficarem grudadas */
-  margin-top: 15px;
-  font-size: 0.95rem;
-}
+.card-header { display: flex; align-items: center; gap: 25px; margin-bottom: 20px; }
+.header-texto { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; gap: 8px; }
+.logo-empresa-time { width: 90px; height: 90px; object-fit: contain; }
 
 .timeline-dot {
   position: absolute;
@@ -417,232 +195,129 @@ html {
   top: 40px;
   width: 18px;
   height: 18px;
-  background: #000000; 
+  
+  /* Usa a variável do Azul LinkedIn que definimos no :root */
+  background-color: var(--accent-color); 
+  
   border-radius: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  border: 3px solid #f0f2f5;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  
+  /* Borda que se adapta ao fundo da seção para dar o efeito de "respiro" */
+  border: 3px solid var(--bg-secao-alt); 
+  
+  /* Sombra leve para dar profundidade */
+  box-shadow: white;
 }
 
+/* --- 9. SEÇÃO PROJETOS --- */
+.secao-projetos { background-color: var(--bg-body); padding: 100px 10%; text-align: center; }
+.container-projetos { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.projeto-card { overflow: hidden; max-width: 380px; text-align: left; }
+.projeto-imagem img { width: 100%; height: 200px; object-fit: cover; }
+.projeto-info { padding: 25px; }
+.projeto-ferramentas { display: flex; gap: 12px; margin: 15px 0; border-top: 1px solid var(--border-color); padding-top: 15px; }
+.projeto-ferramentas img { width: 25px; height: 25px; }
+
+/* --- 10. SEÇÃO CONTATO --- */
+.secao-contato { background-color: var(--bg-secao-alt); padding: 100px 10% 40px 10%; text-align: center; }
+.container-contato { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 80px; }
+.contato-card { padding: 40px 20px; align-items: center; display: flex; flex-direction: column; text-decoration: none; }
+.contato-icone { width: 70px; height: 70px; margin-bottom: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.contato-icone img { width: 40px; }
+
+footer { padding: 30px; border-top: 1px solid var(--border-color); font-size: 0.85rem; }
+
+/* --- 11. RESPONSIVIDADE --- */
 @media (max-width: 768px) {
+  .main-content { flex-direction: column; text-align: center; }
+  .foto-direita img { width: 300px; height: 300px; margin-top: 20px; }
   .timeline-line, .timeline-dot { left: 20px; }
-  .timeline-item.left, .timeline-item.right {
-    padding-left: 50px;
-    padding-right: 0;
-    justify-content: flex-start;
-  }
+  .timeline-item.left, .timeline-item.right { padding-left: 50px; padding-right: 0; justify-content: flex-start; }
+  .timeline-card { max-width: 100%; }
+}
+/* --- 1. AJUSTE DAS VARIÁVEIS (Zebra Pattern) --- */
+:root {
+  --bg-body: #ffffff;           /* Home e Projetos (Branco) */
+  --bg-secao-alt: #f0f2f5;      /* Habilidades e Experiência (Cinza) */
+  --bg-card: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #444444;
+  --border-color: #e0e0e0;
+  --accent-color: #0077B5;      /* Azul LinkedIn */
 }
 
-/* FIM DA MINHA EXPERIENCIA */ 
+[data-theme="dark"] {
+  --bg-body: #121212;           /* Home e Projetos (Preto/Grafite) */
+  --bg-secao-alt: #1a1a1a;      /* Habilidades e Experiência (Cinza Escuro) */
+  --bg-card: #252525;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #383838;
+  --accent-color: #00a8ff;      /* Azul mais brilhante para o Dark Mode */
+}
 
+/* --- 2. APLICAÇÃO DO PADRÃO NAS SEÇÕES --- */
 
-/* Inicio dos projetos */
+/* Experiência e Habilidades usam o fundo alternado (Cinza) */
+.secao-habilidades, .secao-experiencia {
+  background-color: var(--bg-secao-alt);
+}
 
-/* --- SEÇÃO PROJETOS (FUNDO BRANCO) --- */
+/* Projetos usa o fundo principal (Branco no claro / Preto no escuro) */
 .secao-projetos {
-  background-color: #ffffff;
-  padding: 100px 10%;
-  text-align: center;
+  background-color: var(--bg-body);
 }
 
-.secao-projetos h2 {
-  font-size: 2.8rem;
-  margin-bottom: 60px;
-  color: #333;
-}
-
-.container-projetos {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap; /* Faz os projetos irem para baixo no celular */
-}
-
-.projeto-card {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden; /* Garante que a imagem siga o arredondado do card */
-  width: 100%;
-  max-width: 380px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  border: 1px solid #eee;
-  transition: all 0.4s ease;
-  text-align: left;
-}
-
-.projeto-card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  border-color: #0077B5;
-}
-
-.projeto-imagem img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-}
-
-.projeto-info {
-  padding: 25px;
-}
-
-.projeto-info h3 {
-  color: #333;
-  margin-bottom: 15px;
-  font-size: 1.4rem;
-}
-
-.projeto-info p {
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  height: 60px; /* Mantém o alinhamento mesmo com textos diferentes */
-}
-
-/* Container das logos das ferramentas */
-.projeto-ferramentas {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 25px;
-  padding-top: 15px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.projeto-ferramentas img {
-  width: 25px;
-  height: 25px;
-  filter: grayscale(100%);
-  transition: 0.3s;
-}
-
-.projeto-card:hover .projeto-ferramentas img {
-  filter: grayscale(0%); /* As ferramentas ganham cor no hover */
-}
-
-.btn-projeto {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #0077B5;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  transition: 0.3s;
-}
-
-.btn-projeto:hover {
-  background-color: #005582;
-}
-
-/* Termino dos meus projetos 
-
-/* inicio do contato 
-/* --- SEÇÃO CONTATO (FUNDO CINZA GELO) --- */
+/* --- 3. SEÇÃO CONTATO (SEMPRE ESCURA - PADRÃO ZEBRA FINAL) --- */
 .secao-contato {
-  background-color: #f8f9fa;
+  background-color: #000000 !important; /* Força preto total no final */
   padding: 100px 10% 40px 10%;
   text-align: center;
 }
 
-.secao-contato h2 {
-  font-size: 2.8rem;
-  color: #333;
-  margin-bottom: 10px;
+/* Garante que os textos do Contato sejam brancos em qualquer tema */
+.secao-contato h2, 
+.secao-contato .subtitulo-contato {
+  color: #ffffff !important;
 }
 
-.subtitulo-contato {
-  color: #666;
-  margin-bottom: 60px;
-  font-size: 1.1rem;
+.secao-contato .contato-card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+  color: #ffffff !important;
 }
 
-.container-contato {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
+.secao-contato .contato-card h3,
+.secao-contato .contato-card p,
+.secao-contato .contato-card span {
+  color: #ffffff !important;
 }
 
-.contato-card {
-  background: #ffffff;
-  width: 100%;
-  max-width: 300px;
-  padding: 40px 20px;
-  border-radius: 20px;
-  text-decoration: none;
-  color: #333;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  border: 1px solid #eee;
-  transition: all 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Efeito de movimento que você gosta */
-.contato-card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  border-color: #0077B5;
-}
-
-.contato-icone {
-  width: 70px;
-  height: 70px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* --- 4. BOLINHA DA TIMELINE (SEMPRE AZUL LINKEDIN) --- */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  width: 18px;
+  height: 18px;
+  background-color: #0077B5; /* Fixo no Azul LinkedIn */
   border-radius: 50%;
-  transition: 0.3s;
+  transform: translateX(-50%);
+  z-index: 10;
+  border: 3px solid var(--bg-secao-alt);
+  box-shadow: 0 0 8px rgba(0, 119, 181, 0.4);
 }
 
-.contato-icone img {
-  width: 40px;
-  height: 40px;
+/* --- 5. COMPLEMENTOS DE DESIGN --- */
+.skill-card, .timeline-card, .projeto-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Cores suaves de fundo para os ícones */
-.contato-icone.email { background-color: #fff0f0; }
-.contato-icone.whats { background-color: #e8f9ed; }
-.contato-icone.linkedin { background-color: #e8f3f9; }
-
-.contato-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+.skill-card:hover, .timeline-card:hover, .projeto-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--accent-color);
 }
-
-.contato-card p {
-  color: #777;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.contato-card span {
-  font-weight: bold;
-  color: #0077B5;
-  font-size: 0.9rem;
-}
-
-/* FOOTER FINAL */
-footer {
-  margin-top: 50px;
-  padding-top: 30px;
-  border-top: 1px solid #e0e0e0;
-  color: #999;
-  font-size: 0.85rem;
-}
-
-/* Ajuste Celular */
-@media (max-width: 768px) {
-  .contato-card {
-    max-width: 100%;
-  }
-}
-
-/* termino do meu contato 

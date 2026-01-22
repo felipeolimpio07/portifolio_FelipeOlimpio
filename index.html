@@ -16,6 +16,10 @@
     <li><a href="#projetos">projetos</a></li>
     <li><a href="#contato">contato</a></li>
   </ul>
+  <button id="theme-toggle" class="theme-btn">
+  <span class="icon-sun">☀️</span>
+  <span class="icon-moon">🌙</span>
+</button>
 </nav>
 
 <section class="main-content" id="home">
@@ -198,3 +202,20 @@
 </section>
 </body>
 </html>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.documentElement; // Pega o <html>
+
+  // Verifica se o usuário já tinha uma preferência salva
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  body.setAttribute('data-theme', savedTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme); // Salva a escolha para a próxima visita
+  });
+</script>
