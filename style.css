@@ -1,10 +1,15 @@
-/* --- 1. VARIÁVEIS DE TEMA (LÓGICA ZEBRA + TONS SOLICITADOS) --- */
+/* --- 1. CONFIGURAÇÃO DE CORES E TEMAS --- */
+
 :root {
-  /* TEMA CLARO */
-  --bg-zebra-A: #ffffff;      /* FUNDO BRANCO: SOBRE MIM, EXPERIÊNCIA, CONTATO */
-  --bg-zebra-B: #f0f2f5;      /* CINZA CLARO: HABILIDADES, PROJETOS */
-  --bg-hab-card: #cccccc;     /* CINZA DOS CARDS DE SKILLS */
-  --bg-hab-item: #b3b3b3;     /* CINZA DOS BOTÕES DE SKILLS */
+  /* --- TEMA CLARO (PADRÃO) --- */
+  --bg-zebra-A: #ffffff;      /* SOBRE MIM, EXPERIÊNCIA, CONTATO */
+  --bg-zebra-B: #f0f2f5;      /* HABILIDADES, PROJETOS */
+  
+  --bg-hab-card: #cccccc;     /* CARDS (CONTATO, SKILLS, EXP) */
+  --bg-hab-item: #b3b3b3;     /* BOTÕES INTERNOS */
+  
+  --bg-contato-icon: #ffffff; /* FUNDO DO ÍCONE DE CONTATO (100% BRANCO) */
+  
   --text-primary: #000000;
   --text-hab: #1a1a1a;
   --border-color: #e0e0e0;
@@ -12,17 +17,21 @@
   --accent-color: #0077B5;    /* AZUL LINKEDIN */
 }
 
+/* --- TEMA ESCURO --- */
 [data-theme="dark"] {
-  /* TEMA ESCURO COM O SEU TOM #4F4F4F */
-  --bg-zebra-A: #4F4F4F;      /* SEU TOM: SOBRE MIM, EXPERIÊNCIA, CONTATO */
-  --bg-zebra-B: #1a1a1a;      /* CINZA ESCURO: HABILIDADES, PROJETOS */
-  --bg-hab-card: #333333;     /* CARDS DE SKILLS NO ESCURO */
-  --bg-hab-item: #444444;     /* BOTÕES DE SKILLS NO ESCURO */
+  --bg-zebra-A: #4F4F4F;      /* SEU TOM CINZA PADRÃO */
+  --bg-zebra-B: #1a1a1a;      /* PRETO/GRAFITE PARA CONTRASTE */
+  
+  --bg-hab-card: #333333;     
+  --bg-hab-item: #444444;     
+  
+  --bg-contato-icon: #252525; /* FUNDO DO ÍCONE NO MODO ESCURO */
+  
   --text-primary: #ffffff;
   --text-hab: #ffffff;
   --border-color: #383838;
   --navbar-bg: #1a1a1a;
-  --accent-color: #00a8ff;
+  --accent-color: #00a8ff;    /* AZUL MAIS VIBRANTE PARA DARK MODE */
 }
 
 /* --- 2. RESET E PADRÕES --- */
@@ -468,17 +477,241 @@ h2 { text-align: center; font-size: 2.2rem; }
   box-shadow: 0 0 15px rgba(0, 119, 181, 0.2);
 }
 
-/* --- 8. PROJETOS E CONTATO --- */
-.secao-projetos h2 { margin-bottom: 100px; }
-.projeto-card { background-color: var(--bg-hab-card); border-radius: 15px; overflow: hidden; max-width: 380px; }
-.secao-contato { text-align: center; }
-.contato-card { background-color: var(--bg-hab-card); color: var(--text-hab); padding: 20px; border-radius: 15px; text-decoration: none; display: inline-block; margin: 10px; }
+/* --- 8. SEÇÃO PROJETOS (DESIGN PROFISSIONAL) --- */
+/* --- 8. SEÇÃO PROJETOS (TÍTULO ELEVADO) --- */
+.secao-projetos {
+  background-color: var(--bg-zebra-B); 
+  /* REDUZIMOS O PADDING NO TOPO DE 80PX PARA 40PX */
+  padding: 40px 10% 80px 10%; 
+}
 
-/* --- 9. RESPONSIVIDADE --- */
-@media (max-width: 768px) {
-  .main-content { flex-direction: column; text-align: center; }
-  .foto-direita img { width: 280px; height: 280px; margin-top: 30px; }
-  .container-skills { grid-template-columns: 1fr; }
-  .timeline-line, .timeline-dot { left: 20px; }
-  .timeline-item.left, .timeline-item.right { padding-left: 50px; padding-right: 0; justify-content: flex-start; }
+.secao-projetos h2 {
+  /* ZERAMOS A MARGEM SUPERIOR PADRÃO */
+  margin-top: 0;
+  /* DISTÂNCIA PARA OS CARDS NÃO FICAREM GRUDADOS NO TÍTULO */
+  margin-bottom: 60px; 
+  color: var(--text-primary);
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+.container-projetos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projeto-card {
+  background-color: var(--bg-hab-card);
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 350px;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column; /* GARANTE QUE O CONTEÚDO FIQUE EM LINHA VERTICAL */
+}
+
+/* EFEITO DE HOVER NO CARD (PADRÃO DO SITE) */
+.projeto-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 25px rgba(0, 119, 181, 0.2);
+}
+
+/* CONTAINER DA IMAGEM COM AJUSTE INTELIGENTE */
+.projeto-imagem {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #222;
+}
+
+.projeto-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* AJUSTA A FOTO SEM DISTORCER */
+  transition: transform 0.5s ease;
+}
+
+.projeto-card:hover .projeto-imagem img {
+  transform: scale(1.1); /* ZOOM SUAVE NA FOTO */
+}
+
+/* INFORMAÇÕES DO PROJETO */
+.projeto-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* FAZ O CARD TER TAMANHO IGUAL MESMO COM TEXTOS DIFERENTES */
+}
+
+.projeto-info h3 {
+  text-align: left;
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+  color: var(--text-hab);
+}
+
+.projeto-info p {
+  font-size: 0.95rem;
+  color: var(--text-hab);
+  opacity: 0.9;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* ÍCONES DAS FERRAMENTAS UTILIZADAS */
+.projeto-ferramentas {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.projeto-ferramentas img {
+  width: 25px; /* TAMANHO PEQUENO E ELEGANTE PARA OS ÍCONES */
+  height: 25px;
+  filter: grayscale(20%); /* LEVE EFEITO PARA COMBINAR COM O DESIGN */
+  transition: filter 0.3s;
+}
+
+.projeto-ferramentas img:hover {
+  filter: grayscale(0%); /* FICA COLORIDO NO HOVER */
+}
+
+/* BOTÃO "VER PROJETO" */
+.btn-projeto {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color) !important;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: auto; /* EMPURRA O BOTÃO PARA O FINAL DO CARD */
+}
+
+.btn-projeto:hover {
+  background-color: var(--accent-color);
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+}
+
+/* --- 9. SEÇÃO CONTATO (PADRÃO DO SITE) --- */
+.secao-contato {
+    /* USA A VARIÁVEL QUE FICA BRANCA NO CLARO E CINZA #4F4F4F NO ESCURO */
+    background-color: var(--bg-zebra-A) !important; 
+    padding: 80px 5% 100px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.contato-header h2 {
+    color: var(--text-primary) !important;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.contato-header p {
+    color: var(--text-hab);
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+.container-contatos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.contato-card {
+    /* CARD FICA GRAFITE NO ESCURO E BRANCO/CINZA CLARO NO CLARO */
+    background-color: var(--bg-hab-card); 
+    border: 1px solid var(--border-color);
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 290px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+/* --- EFEITO DE CONTORNO AZUL (PADRÃO SKILLS/PROJETOS) --- */
+.contato-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color); /* SEU AZUL #00a8ff */
+    box-shadow: 0 15px 35px rgba(0, 168, 255, 0.15);
+}
+
+.contato-circulo {
+    width: 80px;
+    height: 80px;
+    background-color: #252525; /* FUNDO ESCURO PARA A LOGO RESPIRAR */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    padding: 18px;
+    border: 1px solid var(--border-color);
+}
+
+.contato-circulo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contato-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.contato-card p {
+    color: var(--text-hab);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.btn-contato-link {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.contato-circulo {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-contato-icon); /* A mágica acontece aqui */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    /* Uma borda quase invisível para dar um acabamento fino no branco */
+    border: 1px solid rgba(0,0,0,0.05); 
+    transition: all 0.3s ease;
+}
+
+.contato-circulo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
