@@ -1,438 +1,484 @@
-/* --- 1. VARIÁVEIS E TEMAS (ONDE O DESIGN COMEÇA) --- */
+/* --- 1. VARIÁVEIS DE TEMA (LÓGICA ZEBRA + TONS SOLICITADOS) --- */
 :root {
-  --bg-body: #ffffff;           /* DEFINE A COR DE FUNDO PRINCIPAL DO SITE COMO BRANCO */
-  --bg-secao-alt: #f0f2f5;      /* DEFINE UMA COR DE FUNDO ALTERNADA (CINZA CLARO) PARA CRIAR O EFEITO DE LISTRAS */
-  --bg-card: #ffffff;           /* DEFINE A COR DE FUNDO PADRÃO DOS CARDS COMO BRANCO */
-  --text-primary: #000000;      /* DEFINE A COR DO TEXTO PRINCIPAL COMO PRETO */
-  --text-secondary: #444444;    /* DEFINE UMA COR DE TEXTO MAIS SUAVE PARA DESCRIÇÕES */
-  --border-color: #e0e0e0;      /* DEFINE A COR DAS BORDAS SUTIS DOS ELEMENTOS */
-  --navbar-bg: #ffffff;         /* DEFINE A COR DE FUNDO DA BARRA DE NAVEGAÇÃO */
-  --accent-color: #0077B5;      /* DEFINE A COR DE DESTAQUE (AZUL LINKEDIN) USADA EM LINKS E BOTÕES */
+  /* TEMA CLARO */
+  --bg-zebra-A: #ffffff;      /* FUNDO BRANCO: SOBRE MIM, EXPERIÊNCIA, CONTATO */
+  --bg-zebra-B: #f0f2f5;      /* CINZA CLARO: HABILIDADES, PROJETOS */
+  --bg-hab-card: #cccccc;     /* CINZA DOS CARDS DE SKILLS */
+  --bg-hab-item: #b3b3b3;     /* CINZA DOS BOTÕES DE SKILLS */
+  --text-primary: #000000;
+  --text-hab: #1a1a1a;
+  --border-color: #e0e0e0;
+  --navbar-bg: #ffffff;
+  --accent-color: #0077B5;    /* AZUL LINKEDIN */
 }
 
-/* --- CONFIGURAÇÕES PARA O MODO ESCURO (ATIVADO VIA DATA-THEME NO HTML) --- */
 [data-theme="dark"] {
-  --bg-body: #121212;           /* MUDA O FUNDO PARA UM PRETO PROFUNDO */
-  --bg-secao-alt: #1a1a1a;      /* MUDA O FUNDO ALTERNADO PARA UM CINZA QUASE PRETO */
-  --bg-card: #252525;           /* MUDA OS CARDS PARA UM CINZA GRAFITE PARA DAR RELEVO */
-  --text-primary: #ffffff;      /* INVERTE A COR DO TEXTO PARA BRANCO */
-  --text-secondary: #cccccc;    /* MUDA O TEXTO SECUNDÁRIO PARA UM CINZA CLARO LLEGÍVEL */
-  --border-color: #383838;      /* ESCURECE AS BORDAS PARA NÃO FICAREM MUITO CLARAS NO ESCURO */
-  --navbar-bg: #1a1a1a;         /* MUDA A BARRA DE NAVEGAÇÃO PARA PRETO */
-  --accent-color: #00a8ff;      /* MUDA O AZUL PARA UM TOM MAIS BRILHANTE E VISÍVEL NO ESCURO */
+  /* TEMA ESCURO COM O SEU TOM #4F4F4F */
+  --bg-zebra-A: #4F4F4F;      /* SEU TOM: SOBRE MIM, EXPERIÊNCIA, CONTATO */
+  --bg-zebra-B: #1a1a1a;      /* CINZA ESCURO: HABILIDADES, PROJETOS */
+  --bg-hab-card: #333333;     /* CARDS DE SKILLS NO ESCURO */
+  --bg-hab-item: #444444;     /* BOTÕES DE SKILLS NO ESCURO */
+  --text-primary: #ffffff;
+  --text-hab: #ffffff;
+  --border-color: #383838;
+  --navbar-bg: #1a1a1a;
+  --accent-color: #00a8ff;
 }
 
-/* --- 2. RESET E PADRÕES (LIMPEZA DO NAVEGADOR) --- */
+/* --- 2. RESET E PADRÕES --- */
 * {
-  margin: 0;                    /* REMOVE TODAS AS MARGENS PADRÃO DO NAVEGADOR */
-  padding: 0;                   /* REMOVE TODO O PREENCHIMENTO (PADDING) PADRÃO */
-  box-sizing: border-box;       /* GARANTE QUE O PADDING E A BORDA NÃO AUMENTEM O TAMANHO TOTAL DO ELEMENTO */
-  font-family: sans-serif;      /* DEFINE A FONTE PADRÃO COMO UMA FONTE LIMPA SEM SERIFA */
-  transition: background-color 0.3s, color 0.3s, transform 0.3s, border-color 0.3s; /* CRIA UMA TRANSIÇÃO SUAVE DE 0.3 SEGUNDOS EM TODAS AS MUDANÇAS */
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
-html {
-  scroll-behavior: smooth;      /* FAZ COM QUE A ROLAGEM DA PÁGINA SEJA SUAVE AO CLICAR NOS LINKS DO MENU */
-}
+html { scroll-behavior: smooth; }
+body { color: var(--text-primary); line-height: 1.6; }
+h2 { text-align: center; font-size: 2.2rem; }
 
-body {
-  background-color: var(--bg-body); /* APLICA A COR DE FUNDO DEFINIDA NAS VARIÁVEIS ACIMA */
-  color: var(--text-primary);       /* APLICA A COR DE TEXTO DEFINIDA NAS VARIÁVEIS ACIMA */
-  line-height: 1.6;                 /* DEFINE O ESPAÇAMENTO ENTRE LINHAS PARA MELHORAR A LEITURA */
-}
-
-h1, h2, h3 {
-  text-align: center;               /* CENTRALIZA TODOS OS TÍTULOS HORIZONTALMENTE */
-  margin-top: 40px;                 /* ADICIONA UM ESPAÇO DE 40 PIXELS NO TOPO DOS TÍTULOS */
-}
-
-/* --- 3. NAVBAR (BARRA DE NAVEGAÇÃO SUPERIOR) --- */
+/* --- 3. NAVBAR SLIM --- */
 .navbar {
-  display: flex;                    /* ATIVA O FLEXBOX PARA ORGANIZAR LOGO E LINKS LADO A LADO */
-  justify-content: space-between;   /* JOGA A LOGO PARA A ESQUERDA E OS LINKS PARA A DIREITA */
-  align-items: center;              /* ALINHA OS ITENS VERTICALMENTE AO CENTRO DA BARRA */
-  background-color: var(--navbar-bg); /* APLICA A COR DE FUNDO DA NAVBAR */
-  padding: 0.5rem 10%;              /* DEFINE O ESPAÇAMENTO INTERNO (0.5 EM CIMA/BAIXO, 10% NAS LATERAIS) */
-  position: fixed;                  /* FIXA A BARRA NO TOPO DA TELA MESMO AO ROLAR */
-  top: 0;                           /* COLA A BARRA EXATAMENTE NO TOPO */
-  left: 0;                          /* COLA A BARRA EXATAMENTE NA ESQUERDA */
-  width: 100%;                      /* FAZ COM QUE A NAVBAR OCUPE TODA A LARGURA DA TELA */
-  z-index: 1000;                    /* GARANTE QUE A NAVBAR FIQUE POR CIMA DE TODOS OS OUTROS ELEMENTOS */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* ADICIONA UMA SOMBRA LEVE PARA DAR PROFUNDIDADE */
-  backdrop-filter: blur(10px);      /* CRIA UM EFEITO DE DESFOQUE NO CONTEÚDO QUE PASSA POR BAIXO DA NAVBAR */
-  min-height: 55px;                 /* DEFINE UMA ALTURA MÍNIMA PARA A NAVBAR NÃO FICAR MUITO FINA */
+  display: flex; justify-content: space-between; align-items: center;
+  background-color: var(--navbar-bg); padding: 0.5rem 10%;
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); backdrop-filter: blur(10px);
+  min-height: 55px;
 }
 
-.nav-links {
-  display: flex;                    /* COLOCA OS LINKS DO MENU EM UMA LINHA HORIZONTAL */
-  list-style: none;                 /* REMOVE AS BOLINHAS PADRÃO DA LISTA (UL) */
-}
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 25px; }
+.nav-links a { text-decoration: none; font-weight: bold; color: var(--text-primary); font-size: 0.9rem; }
 
-.nav-links li { 
-  margin-left: 25px;                /* ADICIONA UM ESPAÇO DE 25 PIXELS ENTRE CADA ITEM DO MENU */
-}
-
-.nav-links a {
-  text-decoration: none;            /* REMOVE O SUBINHADO PADRÃO DOS LINKS */
-  font-weight: bold;                /* DEIXA AS LETRAS DO MENU EM NEGRITO */
-  color: var(--text-primary);       /* APLICA A COR DE TEXTO DO TEMA ATUAL */
-  font-size: 0.9rem;                /* DEFINE UM TAMANHO DE FONTE LEVEMENTE MENOR PARA O MENU */
-}
-
-.nav-links a:hover { 
-  color: var(--accent-color);       /* MUDA A COR DO LINK PARA AZUL QUANDO O MOUSE PASSA POR CIMA */
-}
-
-/* --- BOTÃO DE TEMA (SOL E LUA) --- */
 .theme-btn {
-  background: none;                 /* REMOVE O FUNDO PADRÃO DO BOTÃO */
-  border: 1px solid var(--border-color); /* ADICIONA UMA BORDA FINA USANDO A COR DO TEMA */
-  padding: 5px 12px;                /* DEFINE O ESPAÇAMENTO INTERNO DO BOTÃO */
-  cursor: pointer;                  /* MUDA O CURSOR PARA A "MÃOZINHA" DE CLIQUE */
-  border-radius: 20px;              /* DEIXA O BOTÃO ARREDONDADO */
-  font-size: 1.1rem;                /* DEFINE O TAMANHO DOS ÍCONES SOL/LUA */
-  display: flex;                    /* USA FLEXBOX PARA CENTRALIZAR OS ÍCONES INTERNAMENTE */
-  align-items: center;              /* CENTRALIZA OS ÍCONES VERTICALMENTE */
+  background: none; border: 1px solid var(--border-color);
+  padding: 5px 12px; cursor: pointer; border-radius: 20px;
+}
+.theme-btn .icon-sun { display: none; }
+[data-theme="dark"] .theme-btn .icon-sun { display: block; }
+[data-theme="dark"] .theme-btn .icon-moon { display: none; }
+
+/* --- LINKS DA NAVBAR COM MUDANÇA DE COR E MOVIMENTO --- */
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--text-primary); /* SEGUE A COR DO TEMA (PRETO OU BRANCO) */
+  font-size: 0.9rem;
+  display: inline-block; /* NECESSÁRIO PARA O TRANSFORM FUNCIONAR */
+  transition: color 0.3s ease, transform 0.3s ease; /* TRANSIÇÃO SUAVE */
 }
 
-.theme-btn .icon-sun { display: none; }    /* ESCONDE O SOL POR PADRÃO NO TEMA CLARO */
-.theme-btn .icon-moon { display: block; }  /* MOSTRA A LUA POR PADRÃO NO TEMA CLARO */
-
-[data-theme="dark"] .theme-btn .icon-sun { display: block; } /* MOSTRA O SOL QUANDO ESTIVER NO TEMA ESCURO */
-[data-theme="dark"] .theme-btn .icon-moon { display: none; } /* ESCONDE A LUA QUANDO ESTIVER NO TEMA ESCURO */
-
-/* --- 4. SEÇÃO HOME / SOBRE MIM (CONTEÚDO PRINCIPAL) --- */
-.main-content {
-  display: flex;                    /* COLOCA TEXTO E FOTO LADO A LADO */
-  align-items: center;              /* CENTRALIZA TEXTO E FOTO VERTICALMENTE ENTRE SI */
-  justify-content: space-between;   /* EMPURRA O TEXTO PARA A ESQUERDA E A FOTO PARA A DIREITA */
-  padding: 120px 10% 80px 10%;      /* ADICIONA ESPAÇAMENTO: 120PX NO TOPO PARA NÃO FICAR SOB A NAVBAR */
-  min-height: 100vh;                 /* GARANTE QUE A SEÇÃO OCUPE QUASE TODA A ALTURA DA TELA */
+/* EFEITO QUANDO O MOUSE PASSA EM CIMA */
+.nav-links a:hover {
+  color: var(--accent-color); /* MUDA PARA O SEU AZUL LINKEDIN/DESTAQUE */
+  transform: translateY(-3px); /* SOBE LEVEMENTE COMO OS OUTROS BOTÕES */
 }
 
-.texto-esquerda { 
-  flex: 1;                          /* FAZ COM QUE O TEXTO OCUPE O ESPAÇO DISPONÍVEL NA ESQUERDA */
-  padding-right: 20px;              /* ADICIONA UM ESPAÇO ENTRE O TEXTO E A FOTO */
-  text-align: left;                 /* ALINHA O TEXTO À ESQUERDA */
+/* --- 4. SEÇÕES (EFEITO ZEBRA) --- */
+.main-content, .secao-experiencia, .secao-contato {
+  background-color: var(--bg-zebra-A);
+  padding: 100px 10%;
 }
 
-.texto-esquerda h1 { 
-  font-size: 3rem;                  /* DEFINE UM TAMANHO GRANDE PARA O NOME PRINCIPAL */
-  margin-bottom: 20px;              /* ADICIONA ESPAÇO ABAIXO DO NOME */
-  text-align: left;                 /* GARANTE ALINHAMENTO À ESQUERDA NO TÍTULO */
+.secao-habilidades, .secao-projetos {
+  background-color: var(--bg-zebra-B);
+  padding: 80px 10%;
 }
 
+/* --- 5. SOBRE MIM (HOME + FOTO COM MOVIMENTO) --- */
+.main-content { display: flex; align-items: center; justify-content: space-between; min-height: 100vh; }
+.texto-esquerda h1 { font-size: 3rem; margin-bottom: 20px; }
 .foto-direita img {
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 380px; height: 380px; border-radius: 50%; object-fit: cover;
   border: 5px solid var(--accent-color);
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-
-  /* --- ADICIONE ESTA LINHA ABAIXO --- */
-  animation: flutuar 3s ease-in-out infinite; /* NOME DA ANIMAÇÃO | DURAÇÃO | RITMO | REPETIÇÃO INFINITA */
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+.foto-direita img:hover { transform: translateY(-20px) scale(1.05); }
 
-/* --- DEFINIÇÃO DO MOVIMENTO (KEYFRAMES) --- */
-@keyframes flutuar {
-  0% {
-    transform: translateY(0);          /* POSIÇÃO INICIAL */
-  }
-  50% {
-    transform: translateY(-15px);     /* SOBE 15 PIXELS */
-  }
-  100% {
-    transform: translateY(0);          /* VOLTA PARA O LUGAR */
-  }
-}
-
-.botoes-grupo { 
-  display: flex;                    /* COLOCA OS BOTÕES GITHUB E LINKEDIN LADO A LADO */
-  gap: 15px;                        /* ADICIONA UM ESPAÇO DE 15 PIXELS ENTRE OS DOIS BOTÕES */
-  margin-top: 30px;                 /* ADICIONA ESPAÇO ACIMA DO GRUPO DE BOTÕES */
-}
-
+.botoes-grupo { display: flex; gap: 15px; margin-top: 30px; }
 .btn-github, .btn-linkedin {
-  padding: 12px 24px;               /* DEFINE O TAMANHO INTERNO DOS BOTÕES */
-  border-radius: 50px;              /* DEIXA OS BOTÕES NO FORMATO DE CÁPSULA (ARREDONDADOS) */
-  text-decoration: none;            /* REMOVE O SUBINHADO DO LINK */
-  font-weight: bold;                /* DEIXA O TEXTO DO BOTÃO EM NEGRITO */
-  color: white !important;          /* FORÇA A COR DO TEXTO A SER SEMPRE BRANCA */
-  transition: 0.3s;                 /* ADICIONA TRANSIÇÃO PARA EFEITOS DE HOVER */
+  padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; color: white !important;
+}
+.btn-github { background: #24292e; }
+.btn-linkedin { background: #0077b5; }
+
+/* --- 4.1 ESTILO DOS BOTÕES (HOME) --- */
+.btn-github, .btn-linkedin {
+  display: inline-block;            /* GARANTE QUE O TRANSFORM (MOVIMENTO) FUNCIONE CORRETAMENTE */
+  padding: 12px 24px;               /* ESPAÇAMENTO INTERNO DO BOTÃO */
+  border-radius: 50px;              /* FORMATO DE CÁPSULA ARREDONDADA */
+  text-decoration: none;            /* REMOVE O SUBRINHADO DO LINK */
+  font-weight: bold;                /* DEIXA O TEXTO EM NEGRITO */
+  color: white !important;          /* GARANTE QUE O TEXTO SEJA SEMPRE BRANCO */
+  transition: all 0.3s ease;        /* CRIA UMA TRANSIÇÃO SUAVE PARA COR, SOMBRA E MOVIMENTO */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* ADICIONA UMA SOMBRA LEVE NA POSIÇÃO PARADA */
 }
 
-.btn-github { background: #24292e; }   /* DEFINE A COR DE FUNDO PADRÃO DO GITHUB (PRETO) */
-.btn-linkedin { background: #0077b5; } /* DEFINE A COR DE FUNDO PADRÃO DO LINKEDIN (AZUL) */
-
-.btn-github:hover { 
-  background: #444c52;              /* CLAREIA O BOTÃO DO GITHUB AO PASSAR O MOUSE */
-  transform: translateY(-3px);      /* FAZ O BOTÃO SUBIR 3 PIXELS AO PASSAR O MOUSE */
+/* --- EFEITO AO PASSAR O MOUSE NO GITHUB --- */
+.btn-github:hover {
+  background-color: #444c52;        /* CLAREIA O TOM DE PRETO PARA DAR FEEDBACK VISUAL */
+  transform: translateY(-5px);      /* FAZ O BOTÃO SUBIR 5 PIXELS */
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3); /* AUMENTA A SOMBRA PARA PARECER QUE O BOTÃO LEVITOU */
 }
 
-.btn-linkedin:hover { 
-  background: #005582;              /* ESCURECE O BOTÃO DO LINKEDIN AO PASSAR O MOUSE */
-  transform: translateY(-3px);      /* FAZ O BOTÃO SUBIR 3 PIXELS AO PASSAR O MOUSE */
+/* --- EFEITO AO PASSAR O MOUSE NO LINKEDIN --- */
+.btn-linkedin:hover {
+  background-color: #005582;        /* ESCURECE O TOM DE AZUL PARA DESTAQUE */
+  transform: translateY(-5px);      /* FAZ O BOTÃO SUBIR 5 PIXELS */
+  box-shadow: 0 8px 15px rgba(0, 119, 181, 0.3); /* ADICIONA UM BRILHO AZULADO NA SOMBRA */
 }
 
-/* --- 5. CARDS (ESTILO UNIFICADO PARA HABILIDADES E PROJETOS) --- */
-.skill-card, .timeline-card, .projeto-card, .contato-card {
-  background-color: var(--bg-card); /* APLICA A COR DE FUNDO DO TEMA ATUAL */
-  border: 1px solid var(--border-color); /* APLICA A BORDA DO TEMA ATUAL */
-  border-radius: 15px;              /* ARREDONDA OS CANTOS DOS CARDS */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* ADICIONA UMA SOMBRA BEM SUAVE */
-}
-
-.skill-card:hover, .timeline-card:hover, .projeto-card:hover, .contato-card:hover {
-  transform: translateY(-12px);     /* FAZ O CARD SUBIR 12 PIXELS NO HOVER (EFEITO DE LEVITAÇÃO) */
-  border-color: var(--accent-color); /* MUDA A BORDA PARA AZUL NO HOVER */
-  box-shadow: 0 15px 30px rgba(0,0,0,0.12); /* AUMENTA A SOMBRA NO HOVER PARA PARECER QUE ESTÁ MAIS ALTO */
-}
-
-/* --- 6. SEÇÃO HABILIDADES (COMPACTA E COM MODO ESCURO) --- */
-
-/* 1. VARIÁVEIS DE CORES ESPECÍFICAS PARA AS SKILLS */
-:root {
-  --bg-hab-card: #cccccc;      /* CINZA CLARO PARA O CARD NO TEMA CLARO */
-  --bg-hab-item: #b3b3b3;      /* CINZA UM POUCO MAIS ESCURO PARA O BOTÃO DO ÍCONE */
-  --text-hab: #1a1a1a;         /* TEXTO QUASE PRETO PARA O MODO CLARO */
-}
-
-[data-theme="dark"] {
-  --bg-hab-card: #333333;      /* CINZA CHUMBO PARA O CARD NO TEMA ESCURO */
-  --bg-hab-item: #444444;      /* CINZA UM POUCO MAIS CLARO QUE O CARD NO TEMA ESCURO */
-  --text-hab: #ffffff;         /* TEXTO BRANCO PARA O MODO ESCURO */
-}
-
-/* 2. CONFIGURAÇÃO DA SEÇÃO */
-.secao-habilidades {
-  background-color: var(--bg-secao-alt); /* USA A COR ALTERNADA QUE JÁ MUDA COM O TEMA */
-  padding: 60px 10%;            /* PADDING REDUZIDO PARA REMOVER O ESPAÇO EM BRANCO EXCESSO */
-}
-
-.secao-habilidades h2 {
-  margin-bottom: 50px;          /* TÍTULO MAIS PRÓXIMO DOS CARDS */
-  text-align: center;
-  font-size: 2.2rem;
-  color: var(--text-primary);   /* GARANTE QUE O TÍTULO RESPEITE O MODO ESCURO */
-}
-
-/* 3. GRID DOS CARDS (ORGANIZAÇÃO LADO A LADO) */
+/* --- 6. HABILIDADES (GRADE COMPACTA) --- */
+.secao-habilidades h2 { margin-bottom: 50px; }
 .container-skills {
-  display: grid; 
-  /* CRIA DUAS COLUNAS COM LARGURA MÁXIMA DE 450PX PARA NÃO FICAR LARGO DEMAIS */
-  grid-template-columns: repeat(2, minmax(300px, 450px)); 
-  justify-content: center;      /* CENTRALIZA O BLOCO DE SKILLS NA TELA */
-  gap: 20px;                    /* ESPAÇO CURTO ENTRE OS CARDS */
-  max-width: 1000px;            /* LIMITA A LARGURA TOTAL PARA EVITAR ESPAÇOS VAZIOS NAS LATERAIS */
-  margin: 0 auto;
+  display: grid; grid-template-columns: repeat(2, minmax(300px, 450px));
+  justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto;
 }
-
-/* 4. ESTILO DO CARD (FRONT-END, BACK-END, ETC) */
-.skill-card {
-  background-color: var(--bg-hab-card); /* COR QUE MUDA COM O TEMA */
-  border-radius: 12px;
-  padding: 20px;                /* PADDING INTERNO COMPACTO */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: background-color 0.3s ease; /* TRANSIÇÃO SUAVE AO MUDAR O TEMA */
-}
-
-.skill-card h3 {
-  color: var(--text-hab);       /* COR DO TEXTO QUE MUDA COM O TEMA */
-  text-align: left;             /* ALINHADO À ESQUERDA COMO NO SEU MODELO */
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-}
-
-/* 5. GRID INTERNO DOS ÍCONES (3 POR LINHA) */
-.logos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* FORÇA 3 COLUNAS DENTRO DO CARD */
-  gap: 10px;                    /* ESPAÇO CURTO ENTRE OS BOTÕES DE ÍCONE */
-}
-
-/* 6. ESTILO DO BOTÃO DE CADA TECNOLOGIA */
+.skill-card { background-color: var(--bg-hab-card); border-radius: 12px; padding: 20px; }
+.skill-card h3 { color: var(--text-hab); text-align: left; margin-bottom: 15px; }
+.logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .item-logo {
-  background-color: var(--bg-hab-item); /* COR QUE MUDA COM O TEMA */
+  background-color: var(--bg-hab-item); border-radius: 8px; padding: 12px 5px;
+  display: flex; flex-direction: column; align-items: center; transition: all 0.3s;
+}
+.item-logo:hover { background-color: var(--accent-color); transform: translateY(-5px); }
+.item-logo:hover span { color: #ffffff !important; }
+.item-logo img { width: 35px; height: 35px; margin-bottom: 5px; }
+.item-logo span { font-size: 0.75rem; font-weight: bold; color: var(--text-hab); }
+
+/* --- 6. SEÇÃO HABILIDADES (AJUSTE DE CONTORNO NO HOVER) --- */
+
+.item-logo {
+  background-color: var(--bg-hab-item); 
   border-radius: 8px;
-  padding: 12px 5px;            /* ALTURA REDUZIDA PARA FICAR MAIS PRÓXIMO */
+  padding: 12px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  /* ADICIONAMOS UMA BORDA TRANSPARENTE PARA O CARD NÃO MEXER QUANDO A BORDA APARECER */
+  border: 1px solid transparent; 
 }
 
-/* 7. EFEITO DE MOVIMENTO E COR NO MOUSE (HOVER) */
+/* --- EFEITO AO PASSAR O MOUSE (CONTORNO FINO) --- */
 .item-logo:hover {
-  background-color: var(--accent-color); /* BRILHA COM O SEU AZUL NO HOVER */
-  transform: translateY(-5px);           /* SOBE LEVEMENTE */
+  /* REMOVEMOS A MUDANÇA DE FUNDO (MANTÉM O CINZA ORIGINAL OU FICA TRANSPARENTE) */
+  background-color: var(--bg-hab-item); 
+  
+  /* CRIA O CONTORNO FINO COM A COR DE DESTAQUE */
+  border: 1px solid var(--accent-color); 
+  
+  /* FAZ O MOVIMENTO DE SUBIDA QUE VOCÊ JÁ TEM */
+  transform: translateY(-5px); 
+  
+  /* ADICIONA UM BRILHO BEM SUAVE DA COR DO CONTORNO */
+  box-shadow: 0 0 10px rgba(0, 119, 181, 0.2); 
 }
 
+/* GARANTE QUE O TEXTO NÃO MUDE PARA BRANCO, MANTENDO A LEITURA NO FUNDO CINZA */
 .item-logo:hover span {
-  color: #ffffff;               /* GARANTE QUE O TEXTO FIQUE BRANCO SOBRE O AZUL NO HOVER */
+  color: var(--accent-color) !important; /* O TEXTO GANHA A COR DO CONTORNO */
 }
 
-.item-logo img {
-  width: 35px;                  /* ÍCONE COMPACTO */
-  height: 35px;
-  margin-bottom: 5px;
+/* --- 6. SEÇÃO HABILIDADES (CONTORNO AZUL + TEXTO BRANCO) --- */
+
+.item-logo {
+  background-color: var(--bg-hab-item); 
+  border-radius: 8px;
+  padding: 12px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  /* MANTEMOS A BORDA INVISÍVEL PARA NÃO DAR "PULO" NO HOVER */
+  border: 1px solid transparent; 
 }
 
-.item-logo span {
-  font-size: 0.75rem;           /* FONTE MENOR PARA LAYOUT COMPACTO */
-  font-weight: bold;
-  color: var(--text-hab);       /* COR DO TEXTO QUE MUDA COM O TEMA */
+/* --- EFEITO AO PASSAR O MOUSE --- */
+.item-logo:hover {
+  /* ATIVA O CONTORNO FINO COM O SEU AZUL DE DESTAQUE */
+  border: 1px solid var(--accent-color); 
+  
+  /* MANTÉM O MOVIMENTO DE SUBIDA PROFISSIONAL */
+  transform: translateY(-5px); 
+  
+  /* ADICIONA UM BRILHO AZULADO BEM DISCRETO */
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.2); 
 }
 
-/* --- 8. RESPONSIVIDADE (CELULAR E TABLET) --- */
-@media (max-width: 768px) {
-  .container-skills {
-    grid-template-columns: 1fr; /* UMA COLUNA SÓ NO CELULAR */
-    padding: 0 10px;
-  }
+/* GARANTE QUE O NOME DA TECNOLOGIA CONTINUE BRANCO NO MODO ESCURO */
+.item-logo:hover span {
+  color: var(--text-hab) !important; 
 }
+/* --- 7. EXPERIÊNCIA (TIMELINE) --- */
+.timeline-container { position: relative; }
+.timeline-line { position: absolute; left: 50%; width: 4px; height: 100%; background: var(--accent-color); transform: translateX(-50%); }
+.timeline-dot {
+  position: absolute; left: 50%; top: 40px; width: 18px; height: 18px;
+  background-color: #0077B5; border-radius: 50%; transform: translateX(-50%);
+  z-index: 10; border: 3px solid var(--bg-zebra-A); /* BORDA SEGUE O FUNDO DA SEÇÃO */
+}
+.timeline-item { display: flex; margin-bottom: 60px; position: relative; width: 100%; }
+.timeline-item.left { justify-content: flex-end; padding-right: 55%; }
+.timeline-item.right { justify-content: flex-start; padding-left: 55%; }
+.timeline-card { padding: 25px; background-color: var(--bg-hab-card); border-radius: 15px; color: var(--text-hab); }
 
-@media (max-width: 480px) {
-  .logos {
-    grid-template-columns: repeat(2, 1fr); /* 2 POR LINHA EM CELULARES MUITO PEQUENOS */
-  }
-}
-/* --- 7. SEÇÃO EXPERIÊNCIA (LINHA DO TEMPO) --- */
+/* --- 7. SEÇÃO EXPERIÊNCIA (TIMELINE ORGANIZADA) --- */
 .secao-experiencia {
-  background-color: var(--bg-secao-alt); /* MANTÉM O MESMO FUNDO DA SEÇÃO ANTERIOR (OU VOCÊ PODE MUDAR PARA BG-BODY) */
-  padding: 100px 10%;               /* ESPAÇAMENTO INTERNO */
-  position: relative;               /* NECESSÁRIO PARA POSICIONAR A LINHA VERTICAL NO CENTRO */
+  background-color: var(--bg-secao-alt);
+  padding: 80px 10%; /* REDUZI O PADDING SUPERIOR */
+  position: relative;
 }
 
+/* 1. TÍTULO MAIS PARA CIMA */
+.secao-experiencia h2 {
+  margin-top: 0;
+  margin-bottom: 80px; /* DISTÂNCIA SEGURA PARA O HOVER */
+}
+
+.timeline-container { position: relative; }
+
+/* 2. LINHA VERTICAL */
 .timeline-line {
-  position: absolute;               /* COLOCA A LINHA DE FORMA FIXA EM RELAÇÃO À SEÇÃO */
-  left: 50%;                        /* MOVE A LINHA PARA O CENTRO EXATO DA TELA */
-  width: 4px;                       /* LARGURA DA LINHA VERTICAL */
-  height: 100%;                     /* FAZ A LINHA PERCORRER TODA A ALTURA DA SEÇÃO */
-  background: var(--accent-color);  /* COR AZUL DA LINHA */
-  transform: translateX(-50%);      /* CORRIGE O ALINHAMENTO PARA QUE O MEIO DA LINHA FIQUE NO MEIO DA TELA */
-  top: 0;                           /* COMEÇA NO TOPO DA SEÇÃO */
+  position: absolute;
+  left: 50%; width: 4px; height: 100%;
+  background: var(--accent-color);
+  transform: translateX(-50%);
+  top: 0;
 }
 
-.timeline-item { 
-  display: flex;                    /* ATIVA FLEXBOX PARA POSICIONAR OS CARDS */
-  width: 100%;                      /* OCUPA TODA A LARGURA */
-  margin-bottom: 60px;              /* ESPAÇO ENTRE UMA EXPERIÊNCIA E OUTRA */
-  position: relative;               /* NECESSÁRIO PARA O PONTO (DOT) SE PRENDER AQUI */
-}
-
-.timeline-item.left { justify-content: flex-end; padding-right: 55%; } /* CARDS DA ESQUERDA: ALINHA AO FINAL E DEIXA ESPAÇO NA DIREITA */
-.timeline-item.right { justify-content: flex-start; padding-left: 55%; } /* CARDS DA DIREITA: ALINHA AO INÍCIO E DEIXA ESPAÇO NA ESQUERDA */
-
+/* 3. ESTRUTURA DO CARD */
 .timeline-card { 
-  padding: 30px;                    /* ESPAÇO INTERNO DO CARD DE EXPERIÊNCIA */
-  width: 100%;                      /* OCUPA O ESPAÇO DISPONÍVEL NO PADDING DEFINIDO ACIMA */
-  max-width: 480px;                 /* TAMANHO MÁXIMO DO CARD */
-  z-index: 2;                       /* GARANTE QUE O CARD FIQUE POR CIMA DA LINHA VERTICAL */
+  padding: 25px;
+  background-color: var(--bg-hab-card); /* USA O MESMO CINZA DAS SKILLS */
+  border-radius: 15px;
+  color: var(--text-hab);
+  border: 1px solid transparent; /* EVITA PULO NO HOVER */
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+}
+
+/* 4. CABEÇALHO: LOGO AO LADO DO NOME */
+.card-header {
+  display: flex;
+  align-items: center; /* CENTRALIZA LOGO E TEXTO VERTICALMENTE */
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.logo-empresa-time {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: white; /* GARANTE VISIBILIDADE DE LOGOS COM FUNDO VAZIO */
+  padding: 5px;
+}
+
+.header-texto {
+  display: flex;
+  flex-direction: column; /* COLOCA O PERÍODO EMBAIXO DO NOME */
+  text-align: left;
+}
+
+.header-texto h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  text-align: left; /* TIRA A CENTRALIZAÇÃO PADRÃO */
+}
+
+.empresa {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.periodo {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* --- 5. EFEITO DE CONTORNO AZUL (IGUAL AS SKILLS) --- */
+.timeline-card:hover {
+  transform: translateY(-10px); /* SOBE LEVEMENTE */
+  border-color: var(--accent-color); /* CONTORNO FINO AZUL */
+  box-shadow: 0 10px 25px rgba(0, 119, 181, 0.2); /* BRILHO SUTIL */
 }
 
 .timeline-dot {
-  position: absolute;               /* POSICIONA A BOLINHA NA LINHA */
-  left: 50%;                        /* CENTRALIZA NA LINHA VERTICAL */
-  top: 40px;                        /* ALTURA EM QUE A BOLINHA APARECE EM RELAÇÃO AO CARD */
-  width: 18px;                      /* TAMANHO DA BOLINHA */
-  height: 18px;                     /* TAMANHO DA BOLINHA */
-  background-color: #0077B5;        /* COR AZUL FIXA DA BOLINHA */
-  border-radius: 50%;               /* DEIXA A BOLINHA REDONDA */
-  transform: translateX(-50%);      /* CENTRALIZAÇÃO PERFEITA */
-  z-index: 10;                      /* GARANTE QUE A BOLINHA FIQUE POR CIMA DA LINHA E DO CARD */
-  border: 3px solid var(--bg-secao-alt); /* ADICIONA UMA BORDA DA COR DO FUNDO PARA DAR UM EFEITO DE "CORTE" NA LINHA */
-  box-shadow: 0 0 8px rgba(0, 119, 181, 0.4); /* ADICIONA UM BRILHO AZUL SUTIL AO REDOR DA BOLINHA */
+  position: absolute;
+  left: 50%; top: 40px; width: 18px; height: 18px;
+  background-color: #0077B5;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  border: 3px solid var(--bg-secao-alt);
 }
 
-/* --- 8. SEÇÃO PROJETOS --- */
-.secao-projetos {
-  background-color: var(--bg-body); /* VOLTA PARA O FUNDO PRINCIPAL (BRANCO NO TEMA CLARO) */
-  padding: 100px 10%;               /* ESPAÇAMENTO INTERNO */
-  text-align: center;               /* CENTRALIZA TUDO NA SEÇÃO */
-}
-
-.secao-projetos h2 {
-  margin-bottom: 100px;             /* ADICIONA UM GRANDE ESPAÇO ABAIXO DO TÍTULO PARA OS CARDS NÃO BATEREM NELE AO SUBIR */
-}
-
-.container-projetos { 
-  display: flex;                    /* COLOCA OS CARDS DE PROJETOS LADO A LADO */
-  justify-content: center;          /* CENTRALIZA OS CARDS NA TELA */
-  gap: 30px;                        /* ESPAÇO ENTRE OS PROJETOS */
-  flex-wrap: wrap;                  /* PERMITE DESCER PARA A PRÓXIMA LINHA SE NECESSÁRIO */
-}
-
-.projeto-card { 
-  overflow: hidden;                 /* GARANTE QUE A IMAGEM NÃO "SAIA" DO CARD ARREDONDADO */
-  max-width: 380px;                 /* LARGURA MÁXIMA DO CARD DO PROJETO */
-  text-align: left;                 /* ALINHA O TEXTO INTERNO DO PROJETO À ESQUERDA */
-}
-
-.projeto-imagem img { 
-  width: 100%;                      /* A IMAGEM OCUPA TODA A LARGURA DO CARD */
-  height: 200px;                    /* DEFINE UMA ALTURA FIXA PARA A IMAGEM */
-  object-fit: cover;                /* CORTA A IMAGEM PARA CABER NO QUADRADO SEM DISTORCER */
-}
-
-.projeto-info { 
-  padding: 25px;                    /* ESPAÇO INTERNO DO TEXTO DO PROJETO */
-}
-
-/* --- 9. SEÇÃO CONTATO (FINAL DA PÁGINA) --- */
-.secao-contato {
-  background-color: #000000 !important; /* FORÇA O FUNDO A SER PRETO TOTAL SEMPRE */
-  padding: 100px 10% 40px 10%;      /* ESPAÇAMENTO INTERNO */
-  text-align: center;               /* CENTRALIZA TUDO */
-}
-
-.secao-contato h2, .subtitulo-contato { 
-  color: #ffffff !important;        /* FORÇA O TÍTULO E SUBTÍTULO A SEREM SEMPRE BRANCOS */
-}
-
-.secao-contato .contato-card {
-  background-color: #1e1e1e !important; /* DEFINE UM FUNDO CINZA ESCURO PARA OS CARDS DE CONTATO */
-  border: 1px solid #333 !important; /* DEFINE UMA BORDA ESCURA */
-  color: #ffffff !important;        /* TEXTO DO CARD SEMPRE BRANCO */
-}
-
-.secao-contato .contato-card h3,
-.secao-contato .contato-card p,
-.secao-contato .contato-card span {
-  color: #ffffff !important;        /* GARANTE QUE TODOS OS ELEMENTOS DENTRO DO CARD SEJAM BRANCOS */
-}
-
-/* --- 10. RESPONSIVIDADE (ADAPTAÇÃO PARA CELULAR) --- */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
-  .main-content { 
-    flex-direction: column;         /* COLOCA FOTO EMBAIXO DO TEXTO NO CELULAR */
-    text-align: center;             /* CENTRALIZA O TEXTO NO CELULAR */
-  }
-  
-  .texto-esquerda, .texto-esquerda h1 { 
-    text-align: center;             /* CENTRALIZA O TÍTULO NO CELULAR */
-    padding-right: 0;               /* REMOVE O ESPAÇO DA DIREITA QUE EXISTIA NO DESKTOP */
-  }
-  
-  .foto-direita img { 
-    width: 300px;                   /* DIMINUI O TAMANHO DA FOTO NO CELULAR */
-    height: 300px; 
-    margin-top: 30px;               /* ADICIONA ESPAÇO ENTRE O TEXTO E A FOTO */
-  }
-  
-  .timeline-line, .timeline-dot { 
-    left: 20px;                     /* MOVE A LINHA E A BOLINHA PARA O CANTO ESQUERDO NO CELULAR */
-  }
-  
+  .timeline-line, .timeline-dot { left: 20px; }
   .timeline-item.left, .timeline-item.right { 
-    padding-left: 50px;             /* EMPURRA TODOS OS CARDS PARA A DIREITA NO CELULAR */
-    padding-right: 0;               /* REMOVE O PADDING DA DIREITA */
-    justify-content: flex-start;    /* ALINHA TODOS OS CARDS À ESQUERDA */
+    padding-left: 50px; padding-right: 0; justify-content: flex-start; 
   }
+}
+
+/* --- 7. SEÇÃO EXPERIÊNCIA (ADAPTADA AO MODO ESCURO) --- */
+.secao-experiencia {
+  /* USA O CINZA #4F4F4F NO MODO ESCURO AUTOMATICAMENTE */
+  background-color: var(--bg-zebra-A); 
+  padding: 80px 10%;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* TÍTULO RESPEITANDO O ESPAÇAMENTO */
+.secao-experiencia h2 {
+  margin-top: 0;
+  margin-bottom: 80px;
+  color: var(--text-primary);
+}
+
+/* TIMELINE CONTAINER */
+.timeline-container { 
+  position: relative; 
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* LINHA VERTICAL */
+.timeline-line {
+  position: absolute;
+  left: 50%; width: 4px; height: 100%;
+  background: var(--accent-color);
+  transform: translateX(-50%);
+  top: 0;
+}
+
+/* ESTILO DO CARD - SINCRONIZADO COM AS SKILLS */
+.timeline-card { 
+  padding: 25px;
+  /* USA O GRAFITE NO MODO ESCURO */
+  background-color: var(--bg-hab-card); 
+  border-radius: 15px;
+  color: var(--text-hab);
+  border: 1px solid transparent; 
+  transition: all 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* CABEÇALHO: LOGO + NOME + PERÍODO */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.logo-empresa-time {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: white; /* FUNDO BRANCO PARA A LOGO NÃO SUMIR NO ESCURO */
+  padding: 5px;
+  border: 1px solid var(--border-color);
+}
+
+.header-texto {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.header-texto h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  text-align: left;
+  color: var(--text-hab);
+}
+
+.empresa {
+  font-weight: bold;
+  color: var(--accent-color);
+  font-size: 0.95rem;
+}
+
+.periodo {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  color: var(--text-hab);
+}
+
+/* EFEITO DE CONTORNO AZUL (MESMO DAS SKILLS) */
+.timeline-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 25px rgba(0, 119, 181, 0.2);
+}
+
+/* BOLINHA DA TIMELINE (DOT) */
+.timeline-dot {
+  position: absolute;
+  left: 50%; top: 40px; width: 18px; height: 18px;
+  background-color: #0077B5;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  /* IMPORTANTE: A BORDA DEVE SER DA COR DO FUNDO DA SEÇÃO */
+  border: 3px solid var(--bg-zebra-A); 
+}
+
+/* AJUSTES PARA CELULAR */
+@media (max-width: 768px) {
+  .timeline-line, .timeline-dot { left: 20px; }
+  .timeline-item.left, .timeline-item.right { 
+    padding-left: 50px; padding-right: 0; justify-content: flex-start; 
+  }
+}
+
+/* --- 7. SEÇÃO EXPERIÊNCIA (ESTÁTICA E ELEGANTE) --- */
+
+.timeline-card { 
+  padding: 25px;
+  background-color: var(--bg-hab-card); /* GRAFITE NO DARK / CINZA NO LIGHT */
+  border-radius: 15px;
+  color: var(--text-hab);
+  /* MANTEMOS A BORDA TRANSPARENTE PARA ESTABILIDADE */
+  border: 1px solid transparent; 
+  z-index: 2;
+  /* TRANSIÇÃO APENAS PARA A COR DA BORDA E SOMBRA */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- EFEITO AO PASSAR O MOUSE (SEM MOVIMENTO) --- */
+.timeline-card:hover {
+  /* O CARD NÃO SE MEXE (REMOVEMOS O TRANSFORM) */
+  transform: none; 
   
-  .timeline-card { 
-    max-width: 100%;                /* FAZ O CARD OCUPAR TODA A LARGURA DISPONÍVEL NO CELULAR */
-  }
+  /* APENAS O CONTORNO FINO EM AZUL APARECE */
+  border-color: var(--accent-color); 
+  
+  /* UM BRILHO AZULADO SUTIL PARA DESTACAR A SELEÇÃO */
+  box-shadow: 0 0 15px rgba(0, 119, 181, 0.2);
+}
+
+/* --- 8. PROJETOS E CONTATO --- */
+.secao-projetos h2 { margin-bottom: 100px; }
+.projeto-card { background-color: var(--bg-hab-card); border-radius: 15px; overflow: hidden; max-width: 380px; }
+.secao-contato { text-align: center; }
+.contato-card { background-color: var(--bg-hab-card); color: var(--text-hab); padding: 20px; border-radius: 15px; text-decoration: none; display: inline-block; margin: 10px; }
+
+/* --- 9. RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .main-content { flex-direction: column; text-align: center; }
+  .foto-direita img { width: 280px; height: 280px; margin-top: 30px; }
+  .container-skills { grid-template-columns: 1fr; }
+  .timeline-line, .timeline-dot { left: 20px; }
+  .timeline-item.left, .timeline-item.right { padding-left: 50px; padding-right: 0; justify-content: flex-start; }
 }
